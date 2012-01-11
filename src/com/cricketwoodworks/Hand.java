@@ -3,7 +3,6 @@ package com.cricketwoodworks;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.TreeSet;
 
 public class Hand {
     
@@ -12,6 +11,12 @@ public class Hand {
     
     public void addCard(Card card) {
         _cards.add(card);
+    }
+    
+    public void addCards(Card... cards) {
+        for (Card card : cards) {
+            addCard(card);
+        }
     }
     
     public void removeCard(Card card) {
