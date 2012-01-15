@@ -11,6 +11,17 @@ import com.cricketwoodworks.Suit;
 
 public class TU_Hand extends TestCase {
     
+    public void testHandValidation() {
+        _hand.addCard(new Card(Face.FIVE, Suit.SPADE));
+        
+        try {
+            _hand.addCard(new Card(Face.FIVE, Suit.SPADE));
+            fail("Should not have been able to add a duplicate card.");
+        }
+        catch (IllegalArgumentException expected) {
+        }
+    }
+    
     public void testSorting() {
         Card queen = new Card(Face.QUEEN, Suit.CLUB);
         Card ace = new Card(Face.ACE, Suit.CLUB);
@@ -18,7 +29,8 @@ public class TU_Hand extends TestCase {
         Card ten = new Card(Face.TEN, Suit.CLUB);
         Card three = new Card(Face.THREE, Suit.CLUB);
         
-        _hand.addCards(queen, ace, five, ten, three);
+        _hand.addCards(ten, ace, five, three);
+        _hand.addCard(queen);
         
         List<Card> cards = _hand.getCards();
         

@@ -1,18 +1,23 @@
 package com.cricketwoodworks.cribbage.rules.hand;
 
+import java.util.List;
+
 import com.cricketwoodworks.Card;
 import com.cricketwoodworks.Face;
-import com.cricketwoodworks.Hand;
+import com.cricketwoodworks.cribbage.CribbageUtils;
+import com.cricketwoodworks.cribbage.Score;
+import com.cricketwoodworks.cribbage.hands.Hand;
 
 public class Nobs implements HandScoringRule {
     @Override
-    public int scoreHand(Hand hand, Card cut) {
+    public List<Score> scoreHand(Hand hand) {
+        Card cut = hand.getCut();
         for (Card card : hand.getCards()) {
-            if (!card.equals(cut) && card.getFace().equals(Face.JACK) && card.getSuit().equals(cut.getSuit())) {
-                return 1;
+            if (card.getFace().equals(Face.JACK) && card.getSuit().equals(cut.getSuit())) {
+                return CribbageUtils.createScoreList(new Score(1, "Nobs", card, cut));
             }
         }
         
-        return 0;
+        return CribbageUtils.EMPTY_SCORE_LIST;
     }
 }

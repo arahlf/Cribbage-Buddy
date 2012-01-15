@@ -1,6 +1,6 @@
 package com.cricketwoodworks;
 
-public class Card implements Comparable<Card> {
+public class Card {
     
     public Card(Face face, Suit suit) {
         _face = face;
@@ -16,8 +16,28 @@ public class Card implements Comparable<Card> {
     }
     
     @Override
-    public int compareTo(Card other) {
-        return _face.getNumber() - other.getFace().getNumber();
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof Card)) {
+            return false;
+        }
+        
+        Card card = (Card) other;
+        
+        return _face.equals(card.getFace()) && _suit.equals(card.getSuit());
+    }
+    
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + _face.hashCode();
+        result = 31 * result + _suit.hashCode();
+        
+        System.out.println(this + " hash: " + result);
+        
+        return result;
     }
     
     @Override

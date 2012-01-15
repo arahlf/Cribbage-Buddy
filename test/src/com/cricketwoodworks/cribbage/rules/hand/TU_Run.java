@@ -69,6 +69,18 @@ public class TU_Run extends TestCase {
         assertEquals(5, _rule.scoreHand(_hand, null));
     }
     
+    public void testDoubleRun() {
+        Card cut = new Card(Face.FIVE, Suit.DIAMOND);
+        
+        _hand.addCard(cut);
+        _hand.addCard(new Card(Face.TWO, Suit.DIAMOND));
+        _hand.addCard(new Card(Face.FIVE, Suit.CLUB));
+        _hand.addCard(new Card(Face.FOUR, Suit.SPADE));
+        _hand.addCard(new Card(Face.SIX, Suit.HEART));
+        
+        assertEquals(5, _rule.scoreHand(_hand, null));
+    }
+    
     private Hand _hand = new Hand();
     private HandScoringRule _rule = new Run();
 }
