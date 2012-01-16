@@ -13,6 +13,7 @@ public class Hand extends AbstractHand {
             throw new IllegalArgumentException("Hand must have exactly 4 cards.");
         }
         
+        addCard(cut);
         addCards(cards);
     }
     

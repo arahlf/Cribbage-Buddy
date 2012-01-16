@@ -2,10 +2,10 @@ package com.cricketwoodworks;
 
 public enum Suit {
     
-    CLUB("Clubs"),
-    DIAMOND("Diamonds"),
-    HEART("Hearts"),
-    SPADE("Spades");
+    CLUBS("Clubs"),
+    DIAMONDS("Diamonds"),
+    HEARTS("Hearts"),
+    SPADES("Spades");
     
     public String getDisplayName() {
         return _displayName;

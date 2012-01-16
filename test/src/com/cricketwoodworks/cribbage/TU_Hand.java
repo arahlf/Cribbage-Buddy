@@ -12,10 +12,10 @@ import com.cricketwoodworks.Suit;
 public class TU_Hand extends TestCase {
     
     public void testHandValidation() {
-        _hand.addCard(new Card(Face.FIVE, Suit.SPADE));
+        _hand.addCard(new Card(Face.FIVE, Suit.SPADES));
         
         try {
-            _hand.addCard(new Card(Face.FIVE, Suit.SPADE));
+            _hand.addCard(new Card(Face.FIVE, Suit.SPADES));
             fail("Should not have been able to add a duplicate card.");
         }
         catch (IllegalArgumentException expected) {
@@ -23,11 +23,11 @@ public class TU_Hand extends TestCase {
     }
     
     public void testSorting() {
-        Card queen = new Card(Face.QUEEN, Suit.CLUB);
-        Card ace = new Card(Face.ACE, Suit.CLUB);
-        Card five = new Card(Face.FIVE, Suit.CLUB);
-        Card ten = new Card(Face.TEN, Suit.CLUB);
-        Card three = new Card(Face.THREE, Suit.CLUB);
+        Card queen = new Card(Face.QUEEN, Suit.CLUBS);
+        Card ace = new Card(Face.ACE, Suit.CLUBS);
+        Card five = new Card(Face.FIVE, Suit.CLUBS);
+        Card ten = new Card(Face.TEN, Suit.CLUBS);
+        Card three = new Card(Face.THREE, Suit.CLUBS);
         
         _hand.addCards(ten, ace, five, three);
         _hand.addCard(queen);

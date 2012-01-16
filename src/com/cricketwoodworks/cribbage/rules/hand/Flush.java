@@ -1,7 +1,6 @@
 package com.cricketwoodworks.cribbage.rules.hand;
 
-import static com.cricketwoodworks.cribbage.CribbageUtils.createScoreList;
-
+import java.util.Arrays;
 import java.util.List;
 
 import com.cricketwoodworks.Card;
@@ -15,18 +14,17 @@ public class Flush implements HandScoringRule {
     public List<Score> scoreHand(Hand hand) {
         List<Card> cards = hand.getCardsWithoutCut();
         Suit suit = cards.get(0).getSuit();
-        Card cut = hand.getCut();
         
         for (int i = 1; i < cards.size(); i++) {
-            if (cards.get(i).getSuit().equals(suit)) {
+            if (!cards.get(i).getSuit().equals(suit)) {
                 return CribbageUtils.EMPTY_SCORE_LIST;
             }
         }
         
-        if (cut.getSuit().equals(suit)) {
-            return createScoreList(new Score(5, "Flush (5 card)", hand.getCards()));
+        if (hand.getCut().getSuit().equals(suit)) {
+            return Arrays.asList(new Score(5, "Flush (5 card)", hand.getCards()));
         }
         
-        return createScoreList(new Score(4, "Flush (4 card)", cards));
+        return Arrays.asList(new Score(4, "Flush (4 card)", cards));
     }
 }

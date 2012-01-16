@@ -1,7 +1,6 @@
 package com.cricketwoodworks.cribbage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -80,21 +79,17 @@ public class CribbageUtils {
     
     public static int getSuitOrder(Suit suit) {
         switch (suit) {
-            case CLUB:
+            case CLUBS:
                 return 1;
-            case DIAMOND:
+            case DIAMONDS:
                 return 2;
-            case HEART:
+            case HEARTS:
                 return 3;
-            case SPADE:
+            case SPADES:
                 return 4;
             default:
                 throw new IllegalArgumentException("Invalid suit: " + suit);
         }
-    }
-    
-    public static List<Score> createScoreList(Score... scores) {
-        return Arrays.asList(scores);
     }
     
     public static final List<Score> EMPTY_SCORE_LIST = Collections.unmodifiableList(new ArrayList<Score>());

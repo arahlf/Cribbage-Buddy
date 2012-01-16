@@ -1,5 +1,6 @@
 package com.cricketwoodworks.cribbage.rules.hand;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.cricketwoodworks.Card;
@@ -14,7 +15,7 @@ public class Nobs implements HandScoringRule {
         Card cut = hand.getCut();
         for (Card card : hand.getCards()) {
             if (card.getFace().equals(Face.JACK) && card.getSuit().equals(cut.getSuit())) {
-                return CribbageUtils.createScoreList(new Score(1, "Nobs", card, cut));
+                return Arrays.asList(new Score(1, "Nobs", card, cut));
             }
         }
         

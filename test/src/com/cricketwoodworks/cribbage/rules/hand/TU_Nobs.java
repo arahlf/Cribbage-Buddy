@@ -1,38 +1,30 @@
 package com.cricketwoodworks.cribbage.rules.hand;
 
-import junit.framework.TestCase;
+import static com.cricketwoodworks.cribbage.Cards.*;
 
-import com.cricketwoodworks.Card;
-import com.cricketwoodworks.Face;
-import com.cricketwoodworks.Hand;
-import com.cricketwoodworks.Suit;
+import java.util.List;
 
-public class TU_Nobs extends TestCase {
+import com.cricketwoodworks.cribbage.Score;
+import com.cricketwoodworks.cribbage.hands.Hand;
+
+public class TU_Nobs extends AbstractRuleTestCase {
     
     public void testNobs() {
-        Card cut = new Card(Face.FOUR, Suit.DIAMOND);
+        Hand hand = new Hand(FOUR_OF_DIAMONDS, TWO_OF_CLUBS, EIGHT_OF_SPADES, JACK_OF_DIAMONDS, ACE_OF_HEARTS);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.TWO, Suit.CLUB));
-        _hand.addCard(new Card(Face.EIGHT, Suit.SPADE));
-        _hand.addCard(new Card(Face.JACK, Suit.DIAMOND));
-        _hand.addCard(new Card(Face.ACE, Suit.HEART));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(1, _rule.scoreHand(_hand, cut));
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 1, "Nobs for 1", 2);
     }
     
     public void testWhenJackIsTheCut() {
-        Card cut = new Card(Face.JACK, Suit.DIAMOND);
+        Hand hand = new Hand(JACK_OF_DIAMONDS, TWO_OF_CLUBS, EIGHT_OF_SPADES, FOUR_OF_DIAMONDS, ACE_OF_HEARTS);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.TWO, Suit.CLUB));
-        _hand.addCard(new Card(Face.EIGHT, Suit.SPADE));
-        _hand.addCard(new Card(Face.FOUR, Suit.DIAMOND));
-        _hand.addCard(new Card(Face.ACE, Suit.HEART));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(0, _rule.scoreHand(_hand, cut));
+        assertEquals(0, scores.size());
     }
     
-    private Hand _hand = new Hand();
     private HandScoringRule _rule = new Nobs();
 }

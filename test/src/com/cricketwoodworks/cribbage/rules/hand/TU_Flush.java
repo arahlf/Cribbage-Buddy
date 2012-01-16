@@ -1,38 +1,39 @@
 package com.cricketwoodworks.cribbage.rules.hand;
 
-import junit.framework.TestCase;
+import static com.cricketwoodworks.cribbage.Cards.*;
 
-import com.cricketwoodworks.Card;
-import com.cricketwoodworks.Face;
-import com.cricketwoodworks.Hand;
-import com.cricketwoodworks.Suit;
+import java.util.List;
 
-public class TU_Flush extends TestCase {
+import com.cricketwoodworks.cribbage.Score;
+import com.cricketwoodworks.cribbage.hands.Hand;
+
+public class TU_Flush extends AbstractRuleTestCase {
+    
+    public void testNoFlush() {
+        Hand hand = new Hand(FOUR_OF_HEARTS, FIVE_OF_SPADES, SIX_OF_SPADES, SEVEN_OF_SPADES, QUEEN_OF_CLUBS);
+        
+        List<Score> scores = _rule.scoreHand(hand);
+        
+        assertEquals(0, scores.size());
+    }
     
     public void testFourCardFlush() {
-        Card cut = new Card(Face.NINE, Suit.CLUB);
+        Hand hand = new Hand(NINE_OF_CLUBS, TWO_OF_HEARTS, EIGHT_OF_HEARTS, KING_OF_HEARTS, ACE_OF_HEARTS);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.TWO, Suit.HEART));
-        _hand.addCard(new Card(Face.EIGHT, Suit.HEART));
-        _hand.addCard(new Card(Face.KING, Suit.HEART));
-        _hand.addCard(new Card(Face.ACE, Suit.HEART));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(4, _rule.scoreHand(_hand, cut));
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 4, "Flush (4 card) for 4", 4);
     }
     
     public void testFiveCardFlush() {
-        Card cut = new Card(Face.FOUR, Suit.SPADE);
+        Hand hand = new Hand(FOUR_OF_SPADES, FIVE_OF_SPADES, SIX_OF_SPADES, SEVEN_OF_SPADES, QUEEN_OF_SPADES);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.FIVE, Suit.SPADE));
-        _hand.addCard(new Card(Face.SIX, Suit.SPADE));
-        _hand.addCard(new Card(Face.SEVEN, Suit.SPADE));
-        _hand.addCard(new Card(Face.QUEEN, Suit.SPADE));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(5, _rule.scoreHand(_hand, cut));
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 5, "Flush (5 card) for 5", 5);
     }
     
-    private Hand _hand = new Hand();
     private HandScoringRule _rule = new Flush();
 }
