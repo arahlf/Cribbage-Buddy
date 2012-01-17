@@ -35,8 +35,6 @@ public class Card {
         result = 31 * result + _face.hashCode();
         result = 31 * result + _suit.hashCode();
         
-        System.out.println(this + " hash: " + result);
-        
         return result;
     }
     

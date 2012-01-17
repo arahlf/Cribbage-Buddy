@@ -1,86 +1,83 @@
 package com.cricketwoodworks.cribbage.rules.hand;
 
-import junit.framework.TestCase;
+import static com.cricketwoodworks.cribbage.Cards.*;
 
-import com.cricketwoodworks.Card;
-import com.cricketwoodworks.Face;
-import com.cricketwoodworks.Hand;
-import com.cricketwoodworks.Suit;
+import java.util.List;
 
-public class TU_Run extends TestCase {
+import com.cricketwoodworks.cribbage.Score;
+import com.cricketwoodworks.cribbage.hands.Hand;
+
+public class TU_Run extends AbstractRuleTestCase {
     
     public void testNoRun() {
-        Card cut = new Card(Face.TEN, Suit.DIAMONDS);
+        Hand hand = new Hand(TEN_OF_DIAMONDS, TWO_OF_DIAMONDS, FOUR_OF_CLUBS, SIX_OF_SPADES, KING_OF_HEARTS);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.TWO, Suit.DIAMONDS));
-        _hand.addCard(new Card(Face.FOUR, Suit.CLUBS));
-        _hand.addCard(new Card(Face.SIX, Suit.SPADES));
-        _hand.addCard(new Card(Face.KING, Suit.HEARTS));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(0, _rule.scoreHand(_hand, null));
+        assertEquals(0, scores.size());
     }
     
     public void testTwoCardRun() {
-        Card cut = new Card(Face.EIGHT, Suit.DIAMONDS);
+        Hand hand = new Hand(EIGHT_OF_DIAMONDS, TWO_OF_DIAMONDS, KING_OF_CLUBS, THREE_OF_SPADES, JACK_OF_HEARTS);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.TWO, Suit.DIAMONDS));
-        _hand.addCard(new Card(Face.KING, Suit.CLUBS));
-        _hand.addCard(new Card(Face.THREE, Suit.SPADES));
-        _hand.addCard(new Card(Face.JACK, Suit.HEARTS));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(0, _rule.scoreHand(_hand, null));
+        assertEquals(0, scores.size());
     }
     
     public void testThreeCardRun() {
-        Card cut = new Card(Face.TEN, Suit.DIAMONDS);
+        Hand hand = new Hand(TEN_OF_DIAMONDS, TWO_OF_DIAMONDS, FOUR_OF_CLUBS, THREE_OF_SPADES, SIX_OF_HEARTS);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.TWO, Suit.DIAMONDS));
-        _hand.addCard(new Card(Face.FOUR, Suit.CLUBS));
-        _hand.addCard(new Card(Face.THREE, Suit.SPADES));
-        _hand.addCard(new Card(Face.SIX, Suit.HEARTS));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(3, _rule.scoreHand(_hand, null));
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 3, "Run of three for 3", 3);
     }
     
     public void testFourCardRun() {
-        Card cut = new Card(Face.TEN, Suit.DIAMONDS);
+        Hand hand = new Hand(TEN_OF_DIAMONDS, TWO_OF_DIAMONDS, FOUR_OF_CLUBS, THREE_OF_SPADES, FIVE_OF_HEARTS);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.TWO, Suit.DIAMONDS));
-        _hand.addCard(new Card(Face.FOUR, Suit.CLUBS));
-        _hand.addCard(new Card(Face.THREE, Suit.SPADES));
-        _hand.addCard(new Card(Face.FIVE, Suit.HEARTS));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(4, _rule.scoreHand(_hand, null));
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 4, "Run of four for 4", 4);
     }
     
     public void testFiveCardRun() {
-        Card cut = new Card(Face.FIVE, Suit.DIAMONDS);
+        Hand hand = new Hand(FIVE_OF_DIAMONDS, TWO_OF_DIAMONDS, FOUR_OF_CLUBS, THREE_OF_SPADES, SIX_OF_HEARTS);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.TWO, Suit.DIAMONDS));
-        _hand.addCard(new Card(Face.FOUR, Suit.CLUBS));
-        _hand.addCard(new Card(Face.THREE, Suit.SPADES));
-        _hand.addCard(new Card(Face.SIX, Suit.HEARTS));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(5, _rule.scoreHand(_hand, null));
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 5, "Run of five for 5", 5);
     }
     
     public void testDoubleRun() {
-        Card cut = new Card(Face.FIVE, Suit.DIAMONDS);
+        Hand hand = new Hand(FIVE_OF_DIAMONDS, TWO_OF_DIAMONDS, FIVE_OF_CLUBS, FOUR_OF_SPADES, SIX_OF_HEARTS);
         
-        _hand.addCard(cut);
-        _hand.addCard(new Card(Face.TWO, Suit.DIAMONDS));
-        _hand.addCard(new Card(Face.FIVE, Suit.CLUBS));
-        _hand.addCard(new Card(Face.FOUR, Suit.SPADES));
-        _hand.addCard(new Card(Face.SIX, Suit.HEARTS));
+        List<Score> scores = _rule.scoreHand(hand);
         
-        assertEquals(5, _rule.scoreHand(_hand, null));
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 6, "Double run for 6", 4);
     }
     
-    private Hand _hand = new Hand();
+    public void testDoubleDoubleRun() {
+        Hand hand = new Hand(FIVE_OF_DIAMONDS, FOUR_OF_DIAMONDS, FIVE_OF_CLUBS, FOUR_OF_SPADES, SIX_OF_HEARTS);
+        
+        List<Score> scores = _rule.scoreHand(hand);
+        
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 6, "Double run for 6", 4);
+    }
+    
+    public void testTripleRun() {
+        Hand hand = new Hand(TEN_OF_HEARTS, JACK_OF_SPADES, JACK_OF_HEARTS, JACK_OF_CLUBS, QUEEN_OF_DIAMONDS);
+        
+        List<Score> scores = _rule.scoreHand(hand);
+        
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 9, "Triple run for 9", 5);
+    }
+    
     private HandScoringRule _rule = new Run();
 }

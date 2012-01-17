@@ -1,45 +1,35 @@
 package com.cricketwoodworks.cribbage;
 
+import static com.cricketwoodworks.cribbage.Cards.*;
+
 import java.util.List;
 
 import junit.framework.TestCase;
 
 import com.cricketwoodworks.Card;
-import com.cricketwoodworks.Face;
-import com.cricketwoodworks.Hand;
-import com.cricketwoodworks.Suit;
+import com.cricketwoodworks.cribbage.hands.Hand;
 
 public class TU_Hand extends TestCase {
     
-    public void testHandValidation() {
-        _hand.addCard(new Card(Face.FIVE, Suit.SPADES));
-        
+    public void testHandContainsOnlyFiveCards() {
         try {
-            _hand.addCard(new Card(Face.FIVE, Suit.SPADES));
-            fail("Should not have been able to add a duplicate card.");
+            new Hand(FIVE_OF_CLUBS, SIX_OF_SPADES, TEN_OF_HEARTS, EIGHT_OF_DIAMONDS, NINE_OF_HEARTS, ACE_OF_CLUBS);
+            fail("Hand should only allow 5 cards.");
         }
         catch (IllegalArgumentException expected) {
         }
     }
     
-    public void testSorting() {
-        Card queen = new Card(Face.QUEEN, Suit.CLUBS);
-        Card ace = new Card(Face.ACE, Suit.CLUBS);
-        Card five = new Card(Face.FIVE, Suit.CLUBS);
-        Card ten = new Card(Face.TEN, Suit.CLUBS);
-        Card three = new Card(Face.THREE, Suit.CLUBS);
+    public void testCardsAreSorted() {
+        Hand hand = new Hand(KING_OF_SPADES, TWO_OF_DIAMONDS, FIVE_OF_SPADES, FIVE_OF_HEARTS, QUEEN_OF_CLUBS);
         
-        _hand.addCards(ten, ace, five, three);
-        _hand.addCard(queen);
+        List<Card> cards = hand.getCards();
         
-        List<Card> cards = _hand.getCards();
-        
-        assertEquals(ace, cards.get(0));
-        assertEquals(three, cards.get(1));
-        assertEquals(five, cards.get(2));
-        assertEquals(ten, cards.get(3));
-        assertEquals(queen, cards.get(4));
+        assertEquals(TWO_OF_DIAMONDS, cards.get(0));
+        assertEquals(FIVE_OF_HEARTS, cards.get(1));
+        assertEquals(FIVE_OF_SPADES, cards.get(2));
+        assertEquals(QUEEN_OF_CLUBS, cards.get(3));
+        assertEquals(KING_OF_SPADES, cards.get(4));
     }
     
-    private final Hand _hand = new Hand();
 }
