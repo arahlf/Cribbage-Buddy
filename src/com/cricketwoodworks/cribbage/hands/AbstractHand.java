@@ -1,6 +1,7 @@
 package com.cricketwoodworks.cribbage.hands;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -27,5 +28,7 @@ public abstract class AbstractHand {
         }
     }
     
-    private final TreeSet<Card> _cards = new TreeSet<Card>(new CribbageCardComparator());
+    private static final Comparator<Card> CRIBBAGE_CARD_COMPARATOR = new CribbageCardComparator();
+    
+    private final TreeSet<Card> _cards = new TreeSet<Card>(CRIBBAGE_CARD_COMPARATOR);
 }
