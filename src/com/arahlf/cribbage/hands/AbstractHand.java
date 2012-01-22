@@ -1,12 +1,12 @@
-package com.cricketwoodworks.cribbage.hands;
+package com.arahlf.cribbage.hands;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
 
-import com.cricketwoodworks.Card;
-import com.cricketwoodworks.cribbage.CribbageCardComparator;
+import com.arahlf.Card;
+import com.arahlf.cribbage.CribbageCardComparator;
 
 public abstract class AbstractHand {
     

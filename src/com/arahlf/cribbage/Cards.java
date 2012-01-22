@@ -1,8 +1,8 @@
-package com.cricketwoodworks.cribbage;
+package com.arahlf.cribbage;
 
-import com.cricketwoodworks.Card;
-import com.cricketwoodworks.Face;
-import com.cricketwoodworks.Suit;
+import com.arahlf.Card;
+import com.arahlf.Face;
+import com.arahlf.Suit;
 
 public class Cards {
     // clubs

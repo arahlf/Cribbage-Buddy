@@ -1,11 +1,11 @@
-package com.cricketwoodworks.cribbage.rules.hand;
+package com.arahlf.cribbage.rules.hand;
 
-import static com.cricketwoodworks.cribbage.Cards.*;
+import static com.arahlf.cribbage.Cards.*;
 
 import java.util.List;
 
-import com.cricketwoodworks.cribbage.Score;
-import com.cricketwoodworks.cribbage.hands.Hand;
+import com.arahlf.cribbage.Score;
+import com.arahlf.cribbage.hands.Hand;
 
 public class TU_Nobs extends AbstractRuleTestCase {
     

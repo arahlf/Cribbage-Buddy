@@ -1,10 +1,10 @@
-package com.cricketwoodworks.cribbage;
+package com.arahlf.cribbage;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.cricketwoodworks.Suit;
+import com.arahlf.Suit;
 
 /**
  * Utility class used to help compare and score cards.

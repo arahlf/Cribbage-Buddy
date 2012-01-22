@@ -1,4 +1,4 @@
-package com.cricketwoodworks.cribbage;
+package com.arahlf.cribbage;
 
 import junit.framework.TestCase;
 

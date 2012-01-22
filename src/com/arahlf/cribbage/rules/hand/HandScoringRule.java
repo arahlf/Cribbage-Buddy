@@ -1,9 +1,9 @@
-package com.cricketwoodworks.cribbage.rules.hand;
+package com.arahlf.cribbage.rules.hand;
 
 import java.util.List;
 
-import com.cricketwoodworks.cribbage.Score;
-import com.cricketwoodworks.cribbage.hands.Hand;
+import com.arahlf.cribbage.Score;
+import com.arahlf.cribbage.hands.Hand;
 
 /**
  * An interface for rules used to score hands.

@@ -1,9 +1,9 @@
-package com.cricketwoodworks.cribbage;
+package com.arahlf.cribbage;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.cricketwoodworks.Card;
+import com.arahlf.Card;
 
 public class Score implements Comparable<Score> {
     

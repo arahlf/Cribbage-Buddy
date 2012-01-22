@@ -1,13 +1,13 @@
-package com.cricketwoodworks.cribbage.rules.hand;
+package com.arahlf.cribbage.rules.hand;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.cricketwoodworks.Card;
-import com.cricketwoodworks.Suit;
-import com.cricketwoodworks.cribbage.CribbageUtils;
-import com.cricketwoodworks.cribbage.Score;
-import com.cricketwoodworks.cribbage.hands.Hand;
+import com.arahlf.Card;
+import com.arahlf.Suit;
+import com.arahlf.cribbage.CribbageUtils;
+import com.arahlf.cribbage.Score;
+import com.arahlf.cribbage.hands.Hand;
 
 public class Flush implements HandScoringRule {
     @Override

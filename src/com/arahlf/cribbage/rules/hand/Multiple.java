@@ -1,4 +1,4 @@
-package com.cricketwoodworks.cribbage.rules.hand;
+package com.arahlf.cribbage.rules.hand;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.cricketwoodworks.Card;
-import com.cricketwoodworks.Face;
-import com.cricketwoodworks.cribbage.Score;
-import com.cricketwoodworks.cribbage.hands.Hand;
+import com.arahlf.Card;
+import com.arahlf.Face;
+import com.arahlf.cribbage.Score;
+import com.arahlf.cribbage.hands.Hand;
 
 public class Multiple implements HandScoringRule {
     @Override

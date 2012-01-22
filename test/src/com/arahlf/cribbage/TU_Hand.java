@@ -1,13 +1,13 @@
-package com.cricketwoodworks.cribbage;
+package com.arahlf.cribbage;
 
-import static com.cricketwoodworks.cribbage.Cards.*;
+import static com.arahlf.cribbage.Cards.*;
 
 import java.util.List;
 
 import junit.framework.TestCase;
 
-import com.cricketwoodworks.Card;
-import com.cricketwoodworks.cribbage.hands.Hand;
+import com.arahlf.Card;
+import com.arahlf.cribbage.hands.Hand;
 
 public class TU_Hand extends TestCase {
     

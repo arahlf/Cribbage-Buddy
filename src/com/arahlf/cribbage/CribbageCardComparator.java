@@ -1,10 +1,10 @@
-package com.cricketwoodworks.cribbage;
+package com.arahlf.cribbage;
 
-import static com.cricketwoodworks.cribbage.CribbageUtils.getSuitOrder;
+import static com.arahlf.cribbage.CribbageUtils.getSuitOrder;
 
 import java.util.Comparator;
 
-import com.cricketwoodworks.Card;
+import com.arahlf.Card;
 
 /**
  * A Comparator implementation used to sort Cards in Cribbage.  The primary

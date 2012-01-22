@@ -1,8 +1,8 @@
-package com.cricketwoodworks.cribbage.rules.hand;
+package com.arahlf.cribbage.rules.hand;
 
 import junit.framework.TestCase;
 
-import com.cricketwoodworks.cribbage.Score;
+import com.arahlf.cribbage.Score;
 
 public class AbstractRuleTestCase extends TestCase {
     

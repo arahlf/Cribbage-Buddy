@@ -1,15 +1,15 @@
-package com.cricketwoodworks.cribbage.rules.hand;
+package com.arahlf.cribbage.rules.hand;
 
-import static com.cricketwoodworks.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
+import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
 
-import com.cricketwoodworks.Card;
-import com.cricketwoodworks.cribbage.Score;
-import com.cricketwoodworks.cribbage.hands.Hand;
+import com.arahlf.Card;
+import com.arahlf.cribbage.Score;
+import com.arahlf.cribbage.hands.Hand;
 
 public class Run implements HandScoringRule {
     @Override

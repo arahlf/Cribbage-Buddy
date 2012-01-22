@@ -1,8 +1,8 @@
-package com.cricketwoodworks.cribbage.hands;
+package com.arahlf.cribbage.hands;
 
 import java.util.List;
 
-import com.cricketwoodworks.Card;
+import com.arahlf.Card;
 
 public class Hand extends AbstractHand {
     
