@@ -1,7 +1,6 @@
 package com.cricketwoodworks.cribbage.rules.hand;
 
 import static com.cricketwoodworks.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
-import static com.cricketwoodworks.cribbage.CribbageUtils.getCardOrder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +19,7 @@ public class Run implements HandScoringRule {
         
         // store into a map of card order to count of cards with that order
         for (Card card : cards) {
-            Integer cardOrder = Integer.valueOf(getCardOrder(card));
+            Integer cardOrder = Integer.valueOf(card.getFace().getOrdinal());
             
             if (!groups.containsKey(Integer.valueOf(cardOrder))) {
                 groups.put(cardOrder, new ArrayList<Card>());

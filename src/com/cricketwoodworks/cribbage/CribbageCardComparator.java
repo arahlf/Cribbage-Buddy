@@ -1,6 +1,5 @@
 package com.cricketwoodworks.cribbage;
 
-import static com.cricketwoodworks.cribbage.CribbageUtils.getCardOrder;
 import static com.cricketwoodworks.cribbage.CribbageUtils.getSuitOrder;
 
 import java.util.Comparator;
@@ -17,7 +16,7 @@ import com.cricketwoodworks.Card;
 public class CribbageCardComparator implements Comparator<Card> {
     @Override
     public int compare(Card lhs, Card rhs) {
-        int difference = getCardOrder(lhs) - getCardOrder(rhs);
+        int difference = lhs.getFace().getOrdinal() - rhs.getFace().getOrdinal();
         
         if (difference != 0) {
             return difference;
