@@ -19,7 +19,9 @@ public abstract class AbstractHand {
             throw new NullPointerException("Card cannot be null");
         }
         
-        _cards.add(card);
+        if (!_cards.add(card)) {
+            throw new IllegalArgumentException("Hand already contains: " + card);
+        }
     }
     
     protected void addCards(Card... cards) {

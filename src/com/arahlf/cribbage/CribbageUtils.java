@@ -1,9 +1,11 @@
 package com.arahlf.cribbage;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.arahlf.Card;
 import com.arahlf.Suit;
 
 /**
@@ -26,6 +28,16 @@ public class CribbageUtils {
             default:
                 throw new IllegalArgumentException("Invalid suit: " + suit);
         }
+    }
+    
+    public static int addCards(Collection<Card> cards) {
+        int sum = 0;
+        
+        for (Card card : cards) {
+            sum += card.getFace().getValue();
+        }
+        
+        return sum;
     }
     
     public static final List<Score> EMPTY_SCORE_LIST = Collections.unmodifiableList(new ArrayList<Score>());
