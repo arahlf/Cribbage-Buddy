@@ -1,11 +1,12 @@
 package com.arahlf.cribbage.rules.hand;
 
+import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
+
 import java.util.Arrays;
 import java.util.List;
 
 import com.arahlf.Card;
 import com.arahlf.Face;
-import com.arahlf.cribbage.CribbageUtils;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.hands.Hand;
 
@@ -19,6 +20,6 @@ public class Nobs implements HandScoringRule {
             }
         }
         
-        return CribbageUtils.EMPTY_SCORE_LIST;
+        return EMPTY_SCORE_LIST;
     }
 }

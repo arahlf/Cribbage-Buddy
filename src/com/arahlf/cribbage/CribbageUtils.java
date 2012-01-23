@@ -40,6 +40,16 @@ public class CribbageUtils {
         return sum;
     }
     
+    public static int getTotalPoints(List<Score> scores) {
+        int count = 0;
+        
+        for (Score score : scores) {
+            count += score.getPoints();
+        }
+        
+        return count;
+    }
+    
     public static final List<Score> EMPTY_SCORE_LIST = Collections.unmodifiableList(new ArrayList<Score>());
     
     private CribbageUtils() {

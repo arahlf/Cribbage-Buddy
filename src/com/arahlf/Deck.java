@@ -1,8 +1,7 @@
 package com.arahlf;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.Stack;
 
 public class Deck {
     
@@ -18,5 +17,9 @@ public class Deck {
         Collections.shuffle(_cards);
     }
     
-    private final List<Card> _cards = new ArrayList<Card>();
+    public Card getNextCard() {
+        return _cards.pop();
+    }
+    
+    private final Stack<Card> _cards = new Stack<Card>();
 }
