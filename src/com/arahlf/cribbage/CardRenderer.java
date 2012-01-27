@@ -13,6 +13,7 @@ import android.graphics.Rect;
 
 import com.arahlf.Card;
 import com.arahlf.R;
+import com.arahlf.cribbage.hands.Hand;
 
 public class CardRenderer {
     
@@ -20,15 +21,25 @@ public class CardRenderer {
         _bitmap = BitmapFactory.decodeResource(resources, R.drawable.cards);
     }
     
-    public void renderCards(List<Card> cards, Canvas canvas, Paint paint) {
-        int offset = (canvas.getWidth() - (WIDTH * 5)) / 2;
+    public void renderCards(Hand hand, Canvas canvas, Paint paint) {
+        List<Card> cards = hand.getCardsWithoutCut();
+        cards.add(hand.getCut());
+        
+        int offset = (canvas.getWidth() - CUT_OFFSET - (WIDTH * 5)) / 2;
         
         for (int i = 0; i < cards.size(); i++) {
             int x = cards.get(i).getFace().getOrdinal() * WIDTH - WIDTH;
             int y = getSuitOrder(cards.get(i).getSuit()) * HEIGHT - HEIGHT;
             
             Rect src = _createRect(x, y, WIDTH, HEIGHT);
-            Rect dst = _createRect(i * WIDTH + offset, offset, WIDTH, HEIGHT);
+            
+            int dstX = i * WIDTH + offset;
+            
+            if (i == 4) {
+                dstX += CUT_OFFSET;
+            }
+            
+            Rect dst = _createRect(dstX, offset, WIDTH, HEIGHT);
             
             canvas.drawBitmap(_bitmap, src, dst, paint);
         }
@@ -40,6 +51,7 @@ public class CardRenderer {
     
     private final Bitmap _bitmap;
     
+    private static final int CUT_OFFSET = 50;
     private static final int WIDTH = 79;
     private static final int HEIGHT =  123;
 }

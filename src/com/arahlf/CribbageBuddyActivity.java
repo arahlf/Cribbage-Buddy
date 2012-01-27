@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import com.arahlf.cribbage.CardRenderer;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.hands.Hand;
-import com.arahlf.cribbage.rules.hand.CribbagHandScoreRules;
+import com.arahlf.cribbage.rules.hand.CribbagHandScoringRules;
 
 public class CribbageBuddyActivity extends Activity {
     /** Called when the activity is first created. */
@@ -55,16 +55,16 @@ class CribbageView extends View {
         paint.setColor(Color.rgb(30, 115, 30));
         canvas.drawPaint(paint);
         
-        _cardRenderer.renderCards(_hand.getCards(), canvas, paint);
+        _cardRenderer.renderCards(_hand, canvas, paint);
         
         paint.setAntiAlias(true);
         paint.setTextSize(24);
         paint.setTypeface(Typeface.SANS_SERIF);
         paint.setColor(Color.WHITE);
         
-        int offset = 72, start = 225;
+        int offset = 47, start = 200;
         
-        List<Score> scores = new CribbagHandScoreRules().scoreHand(_hand);
+        List<Score> scores = new CribbagHandScoringRules().scoreHand(_hand);
         
         for (int i = 0; i < scores.size(); i++) {
             start += 28;

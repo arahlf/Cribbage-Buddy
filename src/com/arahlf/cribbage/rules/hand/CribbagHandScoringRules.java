@@ -6,9 +6,9 @@ import java.util.List;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.hands.Hand;
 
-public class CribbagHandScoreRules implements HandScoringRule {
+public class CribbagHandScoringRules implements HandScoringRule {
     
-    public CribbagHandScoreRules() {
+    public CribbagHandScoringRules() {
         _rules.add(new Flush());
         _rules.add(new Multiple());
         _rules.add(new Nobs());
