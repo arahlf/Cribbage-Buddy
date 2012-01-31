@@ -6,13 +6,13 @@ import com.arahlf.Card;
 
 public class Hand extends AbstractHand {
     
-    public Hand(Card cut, Card... cards) {
-        if (cards.length != 4) {
-            throw new IllegalArgumentException("Hand must have exactly 4 cards.");
-        }
+    public Hand(Card cut, Card card1, Card card2, Card card3, Card card4) {
         
         addCard(cut);
-        addCards(cards);
+        addCard(card1);
+        addCard(card2);
+        addCard(card3);
+        addCard(card4);
         
         _cut = cut;
     }

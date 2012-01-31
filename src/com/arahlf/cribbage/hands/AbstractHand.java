@@ -16,7 +16,7 @@ public abstract class AbstractHand {
     
     protected void addCard(Card card) {
         if (card == null) {
-            throw new NullPointerException("Card cannot be null");
+            throw new NullPointerException("Card cannot be null.");
         }
         
         if (!_cards.add(card)) {
@@ -24,13 +24,7 @@ public abstract class AbstractHand {
         }
     }
     
-    protected void addCards(Card... cards) {
-        for (Card card : cards) {
-            addCard(card);
-        }
-    }
+    private final TreeSet<Card> _cards = new TreeSet<Card>(CRIBBAGE_CARD_COMPARATOR);
     
     private static final Comparator<Card> CRIBBAGE_CARD_COMPARATOR = new CribbageCardComparator();
-    
-    private final TreeSet<Card> _cards = new TreeSet<Card>(CRIBBAGE_CARD_COMPARATOR);
 }

@@ -14,9 +14,12 @@ public class Nobs implements HandScoringRule {
     @Override
     public List<Score> scoreHand(Hand hand) {
         Card cut = hand.getCut();
-        for (Card card : hand.getCards()) {
-            if (card.getFace().equals(Face.JACK) && card.getSuit().equals(cut.getSuit())) {
-                return Arrays.asList(new Score(1, "Nobs", card, cut));
+        
+        if (!cut.getFace().equals(Face.JACK)) {
+            for (Card card : hand.getCards()) {
+                if (card.getFace().equals(Face.JACK) && card.getSuit().equals(cut.getSuit())) {
+                    return Arrays.asList(new Score(1, "Nobs", card, cut));
+                }
             }
         }
         

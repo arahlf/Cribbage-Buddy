@@ -12,4 +12,7 @@ public class AbstractRuleTestCase extends TestCase {
         assertEquals(cardCount, score.getCards().size());
     }
     
+    public void testNothing() { // until JUnit 4 conversion...
+    }
+    
 }

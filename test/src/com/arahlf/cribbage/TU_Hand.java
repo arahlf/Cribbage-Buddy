@@ -11,10 +11,17 @@ import com.arahlf.cribbage.hands.Hand;
 
 public class TU_Hand extends TestCase {
     
-    public void testHandContainsOnlyFiveCards() {
+    public void testHandValidations() {
         try {
-            new Hand(FIVE_OF_CLUBS, SIX_OF_SPADES, TEN_OF_HEARTS, EIGHT_OF_DIAMONDS, NINE_OF_HEARTS, ACE_OF_CLUBS);
-            fail("Hand should only allow 5 cards.");
+            new Hand(null, TWO_OF_DIAMONDS, FIVE_OF_SPADES, FIVE_OF_HEARTS, QUEEN_OF_CLUBS);
+            fail("Hand should not have allowed a null card.");
+        }
+        catch (NullPointerException expected) {
+        }
+        
+        try {
+            new Hand(FIVE_OF_HEARTS, TWO_OF_DIAMONDS, FIVE_OF_SPADES, FIVE_OF_HEARTS, QUEEN_OF_CLUBS);
+            fail("Hand should not have allowed a null card.");
         }
         catch (IllegalArgumentException expected) {
         }

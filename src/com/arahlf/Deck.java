@@ -21,5 +21,9 @@ public class Deck {
         return _cards.pop();
     }
     
+    public int getRemainingCardCount() {
+        return _cards.size();
+    }
+    
     private final Stack<Card> _cards = new Stack<Card>();
 }
