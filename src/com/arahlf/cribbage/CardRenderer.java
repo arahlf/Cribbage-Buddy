@@ -12,8 +12,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 
 import com.arahlf.Card;
-import com.arahlf.R;
 import com.arahlf.cribbage.hands.Hand;
+import com.arahlf.cribbagebuddy.R;
 
 public class CardRenderer {
     
