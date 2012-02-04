@@ -1,7 +1,10 @@
-package com.arahlf;
+package com.arahlf.cribbage.model;
 
 import java.util.Collections;
 import java.util.Stack;
+
+import com.arahlf.cribbage.Face;
+import com.arahlf.cribbage.Suit;
 
 public class Deck {
     

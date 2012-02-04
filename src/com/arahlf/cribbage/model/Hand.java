@@ -1,8 +1,6 @@
-package com.arahlf.cribbage.hands;
+package com.arahlf.cribbage.model;
 
 import java.util.List;
-
-import com.arahlf.Card;
 
 public class Hand extends AbstractHand {
     

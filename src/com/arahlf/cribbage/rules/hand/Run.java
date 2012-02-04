@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
 
-import com.arahlf.Card;
 import com.arahlf.cribbage.Score;
-import com.arahlf.cribbage.hands.Hand;
+import com.arahlf.cribbage.model.Card;
+import com.arahlf.cribbage.model.Hand;
 
 public class Run implements HandScoringRule {
     @Override

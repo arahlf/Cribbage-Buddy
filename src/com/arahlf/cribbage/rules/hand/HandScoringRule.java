@@ -3,7 +3,7 @@ package com.arahlf.cribbage.rules.hand;
 import java.util.List;
 
 import com.arahlf.cribbage.Score;
-import com.arahlf.cribbage.hands.Hand;
+import com.arahlf.cribbage.model.Hand;
 
 /**
  * An interface for rules used to score hands.

@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.arahlf.Card;
-import com.arahlf.Face;
+import com.arahlf.cribbage.Face;
 import com.arahlf.cribbage.Score;
-import com.arahlf.cribbage.hands.Hand;
+import com.arahlf.cribbage.model.Card;
+import com.arahlf.cribbage.model.Hand;
 
 public class Multiple implements HandScoringRule {
     @Override

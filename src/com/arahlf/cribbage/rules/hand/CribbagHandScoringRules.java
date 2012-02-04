@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.arahlf.cribbage.Score;
-import com.arahlf.cribbage.hands.Hand;
+import com.arahlf.cribbage.model.Hand;
 
 public class CribbagHandScoringRules implements HandScoringRule {
     

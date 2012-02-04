@@ -1,4 +1,7 @@
-package com.arahlf;
+package com.arahlf.cribbage.model;
+
+import com.arahlf.cribbage.Face;
+import com.arahlf.cribbage.Suit;
 
 public class Card {
     

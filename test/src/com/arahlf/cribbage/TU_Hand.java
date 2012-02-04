@@ -6,8 +6,8 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-import com.arahlf.Card;
-import com.arahlf.cribbage.hands.Hand;
+import com.arahlf.cribbage.model.Card;
+import com.arahlf.cribbage.model.Hand;
 
 public class TU_Hand extends TestCase {
     

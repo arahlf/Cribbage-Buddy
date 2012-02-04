@@ -1,11 +1,9 @@
-package com.arahlf;
-
-import static com.arahlf.cribbage.CribbageUtils.getTotalPoints;
-
-import java.util.List;
+package com.arahlf.cribbage;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -15,10 +13,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.arahlf.cribbage.CardRenderer;
-import com.arahlf.cribbage.Score;
-import com.arahlf.cribbage.hands.Hand;
-import com.arahlf.cribbage.rules.hand.CribbagHandScoringRules;
+import com.arahlf.cribbage.model.Deck;
+import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.view.HandView;
 
 public class CribbageBuddyActivity extends Activity {
     /** Called when the activity is first created. */
@@ -28,12 +25,13 @@ public class CribbageBuddyActivity extends Activity {
         
         // Create a LinearLayout in which to add the ImageView
         LinearLayout mLinearLayout = new LinearLayout(this);
-
-
+        
+        Bitmap cardImage = BitmapFactory.decodeResource(this.getResources(), R.drawable.cards);
+        Images.setCardImage(cardImage);
+        
         // Add the ImageView to the layout and set the layout as the content view
         mLinearLayout.addView(new CribbageView(this));
         setContentView(mLinearLayout);
-
     }
 }
 
@@ -41,9 +39,11 @@ class CribbageView extends View {
     public CribbageView(Context context) {
         super(context);
         
-        _buildHand();
+        Deck deck = new Deck();
+        deck.shuffle();
         
-        _cardRenderer = new CardRenderer(this.getResources());
+        _hand = new Hand(deck.getNextCard(), deck.getNextCard(), deck.getNextCard(), deck.getNextCard(), deck.getNextCard());
+        _handView = new HandView(_hand);
     }
     
     @Override
@@ -55,43 +55,22 @@ class CribbageView extends View {
         paint.setColor(Color.rgb(30, 115, 30));
         canvas.drawPaint(paint);
         
-        _cardRenderer.renderCards(_hand, canvas, paint);
-        
         paint.setAntiAlias(true);
         paint.setTextSize(24);
         paint.setTypeface(Typeface.SANS_SERIF);
         paint.setColor(Color.WHITE);
         
-        int offset = 47, start = 200;
-        
-        List<Score> scores = new CribbagHandScoringRules().scoreHand(_hand);
-        
-        for (int i = 0; i < scores.size(); i++) {
-            start += 28;
-            canvas.drawText(scores.get(i).toString(), offset, start, paint);
-        }
-        
-        canvas.drawText("Total: " + getTotalPoints(scores), offset, start + 56, paint);
+        _handView.render(10, 10, canvas, paint);
     }
     
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            _buildHand();
-            invalidate();
-            return true;
         }
         
         return false;
     }
     
-    private void _buildHand() {
-        Deck deck = new Deck();
-        deck.shuffle();
-        
-        _hand = new Hand(deck.getNextCard(), deck.getNextCard(), deck.getNextCard(), deck.getNextCard(), deck.getNextCard());
-    }
-    
-    private Hand _hand;
-    private final CardRenderer _cardRenderer;
+    private final Hand _hand;
+    private final HandView _handView;
 }

@@ -1,8 +1,6 @@
 package com.arahlf.cribbage;
 
-import com.arahlf.Card;
-import com.arahlf.Face;
-import com.arahlf.Suit;
+import com.arahlf.cribbage.model.Card;
 
 public class Cards {
     // clubs

@@ -3,7 +3,7 @@ package com.arahlf.cribbage;
 import java.util.Arrays;
 import java.util.List;
 
-import com.arahlf.Card;
+import com.arahlf.cribbage.model.Card;
 
 public class Score implements Comparable<Score> {
     

@@ -3,11 +3,11 @@ package com.arahlf.cribbage.rules.hand;
 import java.util.Arrays;
 import java.util.List;
 
-import com.arahlf.Card;
-import com.arahlf.Suit;
 import com.arahlf.cribbage.CribbageUtils;
 import com.arahlf.cribbage.Score;
-import com.arahlf.cribbage.hands.Hand;
+import com.arahlf.cribbage.Suit;
+import com.arahlf.cribbage.model.Card;
+import com.arahlf.cribbage.model.Hand;
 
 public class Flush implements HandScoringRule {
     @Override

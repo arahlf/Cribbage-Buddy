@@ -4,7 +4,7 @@ import static com.arahlf.cribbage.CribbageUtils.getSuitOrder;
 
 import java.util.Comparator;
 
-import com.arahlf.Card;
+import com.arahlf.cribbage.model.Card;
 
 /**
  * A Comparator implementation used to sort Cards in Cribbage.  The primary

@@ -1,4 +1,4 @@
-package com.arahlf;
+package com.arahlf.cribbage;
 
 public enum Face {
     

@@ -5,8 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import com.arahlf.Card;
-import com.arahlf.Suit;
+import com.arahlf.cribbage.model.Card;
 
 /**
  * Utility class used to help compare and score cards.

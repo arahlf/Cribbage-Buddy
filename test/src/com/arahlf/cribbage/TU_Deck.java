@@ -2,7 +2,7 @@ package com.arahlf.cribbage;
 
 import junit.framework.TestCase;
 
-import com.arahlf.Deck;
+import com.arahlf.cribbage.model.Deck;
 
 public class TU_Deck extends TestCase {
     

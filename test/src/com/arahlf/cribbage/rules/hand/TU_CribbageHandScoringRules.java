@@ -6,7 +6,7 @@ import static com.arahlf.cribbage.CribbageUtils.getTotalPoints;
 import java.util.List;
 
 import com.arahlf.cribbage.Score;
-import com.arahlf.cribbage.hands.Hand;
+import com.arahlf.cribbage.model.Hand;
 
 public class TU_CribbageHandScoringRules extends AbstractRuleTestCase {
     

@@ -5,9 +5,9 @@ import static com.arahlf.cribbage.CribbageUtils.addCards;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.arahlf.Card;
 import com.arahlf.cribbage.Score;
-import com.arahlf.cribbage.hands.Hand;
+import com.arahlf.cribbage.model.Card;
+import com.arahlf.cribbage.model.Hand;
 
 public class FifteenCount implements HandScoringRule {
     @Override
