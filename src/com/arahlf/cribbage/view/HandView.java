@@ -9,23 +9,31 @@ import android.graphics.Paint;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
 
-public class HandView implements Renderable {
+public class HandView implements CardTapListener, Renderable {
     
-    public HandView(Hand hand) {
-        _hand = hand;
+    public HandView(int x, int y, Hand hand, ZIndexManager manager) {
+        List<Card> cards = hand.getCards();
         
-        for (Card card : _hand.getCards()) {
-            _cardViews.add(new CardView(card));
+        for (int i = 0; i < cards.size(); i++) {
+            CardView cardView = new CardView(x + CardView.WIDTH / 2 * i, y, cards.get(i));
+            
+            manager.addTappable(cardView);
+            cardView.setTapListener(this);
+            _cardViews.add(cardView);
         }
     }
     
     @Override
-    public void render(int x, int y, Canvas canvas, Paint paint) {
-        for (int i = 0; i < _cardViews.size(); i++) {
-            _cardViews.get(i).render(x + CardView.WIDTH / 2 * i, y, canvas, paint);
+    public void notify(CardView cardView) {
+        cardView.setY(cardView.getY() - 25);
+    }
+    
+    @Override
+    public void render(Canvas canvas, Paint paint) {
+        for (CardView cardView : _cardViews) {
+            cardView.render(canvas, paint);
         }
     }
     
-    private final Hand _hand;
     private final List<CardView> _cardViews = new ArrayList<CardView>();
 }

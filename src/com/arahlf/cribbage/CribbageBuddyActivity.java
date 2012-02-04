@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import com.arahlf.cribbage.model.Deck;
 import com.arahlf.cribbage.model.Hand;
 import com.arahlf.cribbage.view.HandView;
+import com.arahlf.cribbage.view.ZIndexManager;
 
 public class CribbageBuddyActivity extends Activity {
     /** Called when the activity is first created. */
@@ -42,8 +43,9 @@ class CribbageView extends View {
         Deck deck = new Deck();
         deck.shuffle();
         
+        _manager = new ZIndexManager();
         _hand = new Hand(deck.getNextCard(), deck.getNextCard(), deck.getNextCard(), deck.getNextCard(), deck.getNextCard());
-        _handView = new HandView(_hand);
+        _handView = new HandView(100, 100, _hand, _manager);
     }
     
     @Override
@@ -60,12 +62,17 @@ class CribbageView extends View {
         paint.setTypeface(Typeface.SANS_SERIF);
         paint.setColor(Color.WHITE);
         
-        _handView.render(10, 10, canvas, paint);
+        _handView.render(canvas, paint);
     }
     
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
+           boolean handled = _manager.notifyTapEvent((int) event.getX(), (int) event.getY());
+           
+           if (handled) {
+               invalidate();
+           }
         }
         
         return false;
@@ -73,4 +80,5 @@ class CribbageView extends View {
     
     private final Hand _hand;
     private final HandView _handView;
+    private final ZIndexManager _manager;
 }

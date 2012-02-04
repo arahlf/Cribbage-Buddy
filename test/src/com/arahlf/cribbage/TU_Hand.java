@@ -38,5 +38,4 @@ public class TU_Hand extends TestCase {
         assertEquals(QUEEN_OF_CLUBS, cards.get(3));
         assertEquals(KING_OF_SPADES, cards.get(4));
     }
-    
 }
