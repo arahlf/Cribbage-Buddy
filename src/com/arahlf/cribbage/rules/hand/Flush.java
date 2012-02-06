@@ -1,9 +1,10 @@
 package com.arahlf.cribbage.rules.hand;
 
+import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
+
 import java.util.Arrays;
 import java.util.List;
 
-import com.arahlf.cribbage.CribbageUtils;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.Suit;
 import com.arahlf.cribbage.model.Card;
@@ -17,7 +18,7 @@ public class Flush implements HandScoringRule {
         
         for (int i = 1; i < cards.size(); i++) {
             if (!cards.get(i).getSuit().equals(suit)) {
-                return CribbageUtils.EMPTY_SCORE_LIST;
+                return EMPTY_SCORE_LIST;
             }
         }
         
@@ -25,6 +26,10 @@ public class Flush implements HandScoringRule {
             return Arrays.asList(new Score(5, "Flush (5 card)", hand.getCards()));
         }
         
-        return Arrays.asList(new Score(4, "Flush (4 card)", cards));
+        if (!hand.isCrib()) {
+            return Arrays.asList(new Score(4, "Flush (4 card)", cards));
+        }
+        
+        return EMPTY_SCORE_LIST;
     }
 }

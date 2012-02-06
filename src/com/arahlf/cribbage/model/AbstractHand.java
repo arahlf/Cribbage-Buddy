@@ -13,7 +13,11 @@ public abstract class AbstractHand {
         return new ArrayList<Card>(_cards);
     }
     
-    protected void addCard(Card card) {
+    public int getCardCount() {
+        return _cards.size();
+    }
+    
+    protected void _addCard(Card card) {
         if (card == null) {
             throw new NullPointerException("Card cannot be null.");
         }
