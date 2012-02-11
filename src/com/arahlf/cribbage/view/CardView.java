@@ -23,7 +23,7 @@ public class CardView implements Tappable, Renderable {
         
         if (new Rect(_x, _y, _x + WIDTH, _y + HEIGHT).contains(x, y)) {
             if (_tapListener != null) {
-                _tapListener.notify(this);
+                _tapListener.onCardTapped(this);
             }
             
             return true;

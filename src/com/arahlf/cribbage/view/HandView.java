@@ -24,7 +24,7 @@ public class HandView implements CardTapListener, Renderable {
     }
     
     @Override
-    public void notify(CardView cardView) {
+    public void onCardTapped(CardView cardView) {
         cardView.setY(cardView.getY() - 25);
     }
     
