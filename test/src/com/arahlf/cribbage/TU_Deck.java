@@ -11,13 +11,13 @@ public class TU_Deck extends TestCase {
         
         assertEquals(52, deck.getRemainingCardCount());
         
-        deck.getNextCard();
+        deck.deal();
         
         assertEquals(51, deck.getRemainingCardCount());
         
-        deck.getNextCard();
-        deck.getNextCard();
-        deck.getNextCard();
+        deck.deal();
+        deck.deal();
+        deck.deal();
         
         assertEquals(48, deck.getRemainingCardCount());
     }

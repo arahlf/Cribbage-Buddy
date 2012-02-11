@@ -3,6 +3,7 @@ package com.arahlf.cribbage;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.arahlf.cribbage.model.Card;
@@ -48,6 +49,8 @@ public class CribbageUtils {
         
         return count;
     }
+    
+    public static final Comparator<Card> CRIBBAGE_CARD_COMPARATOR = new CribbageCardComparator();
     
     public static final List<Score> EMPTY_SCORE_LIST = Collections.unmodifiableList(new ArrayList<Score>());
     

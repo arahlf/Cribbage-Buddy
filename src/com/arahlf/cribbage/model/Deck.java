@@ -20,7 +20,7 @@ public class Deck {
         Collections.shuffle(_cards);
     }
     
-    public Card getNextCard() {
+    public Card deal() {
         return _cards.pop();
     }
     

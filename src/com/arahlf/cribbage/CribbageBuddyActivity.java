@@ -44,7 +44,7 @@ class CribbageView extends View {
         deck.shuffle();
         
         _manager = new ZIndexManager();
-        _hand = new Hand(deck.getNextCard(), deck.getNextCard(), deck.getNextCard(), deck.getNextCard(), deck.getNextCard());
+        _hand = new Hand(deck.deal(), deck.deal(), deck.deal(), deck.deal(), deck.deal());
         _handView = new HandView(100, 100, _hand, _manager);
     }
     

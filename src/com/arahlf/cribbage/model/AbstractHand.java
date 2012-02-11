@@ -1,11 +1,10 @@
 package com.arahlf.cribbage.model;
 
+import static com.arahlf.cribbage.CribbageUtils.CRIBBAGE_CARD_COMPARATOR;
+
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
-
-import com.arahlf.cribbage.CribbageCardComparator;
 
 public abstract class AbstractHand {
     
@@ -28,6 +27,4 @@ public abstract class AbstractHand {
     }
     
     private final TreeSet<Card> _cards = new TreeSet<Card>(CRIBBAGE_CARD_COMPARATOR);
-    
-    private static final Comparator<Card> CRIBBAGE_CARD_COMPARATOR = new CribbageCardComparator();
 }
