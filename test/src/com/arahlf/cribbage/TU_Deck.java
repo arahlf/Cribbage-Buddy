@@ -1,11 +1,13 @@
 package com.arahlf.cribbage;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 import com.arahlf.cribbage.model.Deck;
 
-public class TU_Deck extends TestCase {
-    
+public class TU_Deck {
+    @Test
     public void testRemovingCards() {
         Deck deck = new Deck();
         
@@ -21,5 +23,4 @@ public class TU_Deck extends TestCase {
         
         assertEquals(48, deck.getRemainingCardCount());
     }
-    
 }
