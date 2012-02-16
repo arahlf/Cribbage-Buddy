@@ -34,7 +34,7 @@ public class CribbageUtils {
         int sum = 0;
         
         for (Card card : cards) {
-            sum += card.getFace().getValue();
+            sum += card.getRank().getValue();
         }
         
         return sum;

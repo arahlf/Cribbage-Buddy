@@ -13,10 +13,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.arahlf.cribbage.model.Deck;
-import com.arahlf.cribbage.model.Hand;
-import com.arahlf.cribbage.view.HandView;
-import com.arahlf.cribbage.view.ZIndexManager;
+import com.arahlf.cribbage.controller.GameController;
+import com.arahlf.cribbage.model.Game;
+import com.arahlf.cribbage.model.Player;
 
 public class CribbageBuddyActivity extends Activity {
     /** Called when the activity is first created. */
@@ -40,20 +39,18 @@ class CribbageView extends View {
     public CribbageView(Context context) {
         super(context);
         
-        Deck deck = new Deck();
-        deck.shuffle();
+        Player user = new Player("User");
+        Player computer = new Player("Computer");
+        Game game = new Game(user, computer);
         
-        _manager = new ZIndexManager();
-        _hand = new Hand(deck.deal(), deck.deal(), deck.deal(), deck.deal(), deck.deal());
-        _handView = new HandView(100, 100, _hand, _manager);
+        _gameController = new GameController(game);
     }
     
     @Override
     protected void onDraw(Canvas canvas) {
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
-
-        // make the entire canvas white
+        
         paint.setColor(Color.rgb(30, 115, 30));
         canvas.drawPaint(paint);
         
@@ -62,13 +59,13 @@ class CribbageView extends View {
         paint.setTypeface(Typeface.SANS_SERIF);
         paint.setColor(Color.WHITE);
         
-        _handView.render(canvas, paint);
+        _gameController.renderViews(canvas, paint);
     }
     
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-           boolean handled = _manager.notifyTapEvent((int) event.getX(), (int) event.getY());
+           boolean handled = _gameController.handleTapEvent((int) event.getX(), (int) event.getY());
            
            if (handled) {
                invalidate();
@@ -78,7 +75,5 @@ class CribbageView extends View {
         return false;
     }
     
-    private final Hand _hand;
-    private final HandView _handView;
-    private final ZIndexManager _manager;
+    private final GameController _gameController;
 }

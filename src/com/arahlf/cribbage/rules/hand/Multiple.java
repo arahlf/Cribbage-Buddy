@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.arahlf.cribbage.Face;
+import com.arahlf.cribbage.Rank;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
@@ -16,20 +16,20 @@ public class Multiple implements HandScoringRule {
     @Override
     public List<Score> scoreHand(Hand hand) {
         List<Card> cards = hand.getCards();
-        Map<Face, List<Card>> groups = new HashMap<Face, List<Card>>();
+        Map<Rank, List<Card>> groups = new HashMap<Rank, List<Card>>();
         
         // map the cards into groups
         for (Card card : cards) {
-            if (!groups.containsKey(card.getFace())) {
-                groups.put(card.getFace(), new ArrayList<Card>());
+            if (!groups.containsKey(card.getRank())) {
+                groups.put(card.getRank(), new ArrayList<Card>());
             }
             
-            groups.get(card.getFace()).add(card);
+            groups.get(card.getRank()).add(card);
         }
         
         List<Score> scores = new ArrayList<Score>();
         
-        for (Entry<Face, List<Card>> entry : groups.entrySet()) {
+        for (Entry<Rank, List<Card>> entry : groups.entrySet()) {
             List<Card> group = entry.getValue();
             
             switch (group.size()) {
@@ -45,7 +45,7 @@ public class Multiple implements HandScoringRule {
                     scores.add(new Score(12, "Four of a kind", group));
                     break;
                 default:
-                    throw new IllegalArgumentException("Invalid Face group count: " + group.size());
+                    throw new IllegalArgumentException("Invalid Rank group count: " + group.size());
             }
         }
         

@@ -3,15 +3,15 @@ package com.arahlf.cribbage.model;
 import java.util.Collections;
 import java.util.Stack;
 
-import com.arahlf.cribbage.Face;
+import com.arahlf.cribbage.Rank;
 import com.arahlf.cribbage.Suit;
 
 public class Deck {
     
     public Deck() {
-        for (Face face : Face.values()) {
+        for (Rank rank : Rank.values()) {
             for (Suit suit : Suit.values()) {
-                _cards.add(new Card(face, suit));
+                _cards.add(new Card(rank, suit));
             }
         }
     }

@@ -10,9 +10,9 @@ import com.arahlf.cribbage.model.Card;
 public class TU_Card {
     @Test
     public void testEquals() {
-        Card x = new Card(Face.ACE, Suit.SPADES);
-        Card y = new Card(Face.ACE, Suit.SPADES);
-        Card z = new Card(Face.ACE, Suit.SPADES);
+        Card x = new Card(Rank.ACE, Suit.SPADES);
+        Card y = new Card(Rank.ACE, Suit.SPADES);
+        Card z = new Card(Rank.ACE, Suit.SPADES);
         
         assertFalse(x.equals(null));
         
@@ -35,8 +35,8 @@ public class TU_Card {
     
     @Test
     public void testHashCode() {
-        Card x = new Card(Face.FIVE, Suit.CLUBS);
-        Card y = new Card(Face.FIVE, Suit.CLUBS);
+        Card x = new Card(Rank.FIVE, Suit.CLUBS);
+        Card y = new Card(Rank.FIVE, Suit.CLUBS);
         
         assertTrue(x.hashCode() == y.hashCode());
     }

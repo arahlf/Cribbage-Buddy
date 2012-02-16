@@ -1,6 +1,6 @@
 package com.arahlf.cribbage;
 
-public enum Face {
+public enum Rank {
     
     ACE("Ace", 1, 1),
     TWO("Two", 2, 2),
@@ -28,7 +28,7 @@ public enum Face {
         return _value;
     }
     
-    private Face(String displayName, int ordinal, int value) {
+    private Rank(String displayName, int ordinal, int value) {
         _displayName = displayName;
         _ordinal = ordinal;
         _value = value;

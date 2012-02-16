@@ -19,7 +19,7 @@ public class Run implements HandScoringRule {
         
         // store into a map of card order to count of cards with that order
         for (Card card : cards) {
-            Integer cardOrder = Integer.valueOf(card.getFace().getOrdinal());
+            Integer cardOrder = Integer.valueOf(card.getRank().getOrdinal());
             
             if (!groups.containsKey(Integer.valueOf(cardOrder))) {
                 groups.put(cardOrder, new ArrayList<Card>());
