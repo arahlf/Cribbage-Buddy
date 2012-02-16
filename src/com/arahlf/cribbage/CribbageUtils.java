@@ -34,7 +34,7 @@ public class CribbageUtils {
         int sum = 0;
         
         for (Card card : cards) {
-            sum += card.getRank().getValue();
+            sum += card.getRank().getPipValue();
         }
         
         return sum;

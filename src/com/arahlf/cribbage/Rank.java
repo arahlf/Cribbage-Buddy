@@ -24,17 +24,17 @@ public enum Rank {
         return _ordinal;
     }
     
-    public int getValue() {
-        return _value;
+    public int getPipValue() {
+        return _pipValue;
     }
     
-    private Rank(String displayName, int ordinal, int value) {
+    private Rank(String displayName, int ordinal, int pipValue) {
         _displayName = displayName;
         _ordinal = ordinal;
-        _value = value;
+        _pipValue = pipValue;
     }
     
     private final int _ordinal;
-    private final int _value;
+    private final int _pipValue;
     private final String _displayName;
 }
