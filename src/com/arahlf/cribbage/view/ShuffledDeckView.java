@@ -17,10 +17,13 @@ public class ShuffledDeckView implements CardTapListener, Renderable, Tappable {
         _deck = deck;
         _listener = listener;
         
+        deck.shuffle();
+        
         for (int i = 0; i < deck.getRemainingCardCount(); i++) {
-            CardView cardView = new CardView(_x + i * 5, _y, null);
-            
+            CardView cardView = new CardView(_x + i * 5, _y, deck.getCard(i));
+            cardView.setFaceUp(false);
             cardView.setTapListener(this);
+            
             _cardViews.add(cardView);
             _manager.addTappable(cardView);
         }

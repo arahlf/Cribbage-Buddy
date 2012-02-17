@@ -13,16 +13,6 @@ public class CardView implements Tappable, Renderable {
     public CardView(int x, int y, Card card) {
         _x = x;
         _y = y;
-        
-        if (card != null) {
-            _spriteX = card.getRank().getOrdinal() * WIDTH - WIDTH;
-            _spriteY = getSuitOrder(card.getSuit()) * HEIGHT - HEIGHT;
-        }
-        else {
-            _spriteX = 2 * WIDTH;
-            _spriteY = 4 * HEIGHT;
-        }
-        
         _card = card;
     }
     
@@ -40,9 +30,18 @@ public class CardView implements Tappable, Renderable {
     
     @Override
     public void render(Canvas canvas, Paint paint) {
+        int spriteX, spriteY;
         
+        if (_faceUp) {
+            spriteX = _card.getRank().getOrdinal() * WIDTH - WIDTH;
+            spriteY = getSuitOrder(_card.getSuit()) * HEIGHT - HEIGHT;
+        }
+        else {
+            spriteX = 2 * WIDTH;
+            spriteY = 4 * HEIGHT;
+        }
         
-        Rect src = new Rect(_spriteX, _spriteY, _spriteX + WIDTH, _spriteY + HEIGHT);
+        Rect src = new Rect(spriteX, spriteY, spriteX + WIDTH, spriteY + HEIGHT);
         Rect dst = new Rect(_x, _y, _x + WIDTH, _y + HEIGHT);
         
         canvas.drawBitmap(Images.getCardImage(), src, dst, paint);
@@ -72,13 +71,16 @@ public class CardView implements Tappable, Renderable {
         return _card;
     }
     
+    public void setFaceUp(boolean faceUp) {
+        _faceUp = faceUp;
+    }
+    
     public static final int WIDTH = 79;
     public static final int HEIGHT =  123;
     
     private int _x;
     private int _y;
-    private final int _spriteX;
-    private final int _spriteY;
+    private boolean _faceUp = true;
     private final Card _card;
     private CardTapListener _tapListener;
 }
