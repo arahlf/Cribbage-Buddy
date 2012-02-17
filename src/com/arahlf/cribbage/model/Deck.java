@@ -24,6 +24,10 @@ public class Deck {
         return _cards.pop();
     }
     
+    public Card getCard(int index) {
+        return _cards.get(index);
+    }
+    
     public int getRemainingCardCount() {
         return _cards.size();
     }

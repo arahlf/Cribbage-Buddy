@@ -7,6 +7,14 @@ public class Game {
         _player2 = player2;
     }
     
+    public Player getPlayer1() {
+        return _player1;
+    }
+    
+    public Player getPlayer2() {
+        return _player2;
+    }
+    
     private final Player _player1;
     private final Player _player2;
 }

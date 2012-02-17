@@ -39,7 +39,7 @@ class CribbageView extends View {
     public CribbageView(Context context) {
         super(context);
         
-        Player user = new Player("User");
+        Player user = new Player("Player");
         Player computer = new Player("Computer");
         Game game = new Game(user, computer);
         
@@ -70,6 +70,8 @@ class CribbageView extends View {
            if (handled) {
                invalidate();
            }
+           
+           return handled;
         }
         
         return false;
