@@ -43,9 +43,6 @@ class CribbageView extends View {
         Player computer = new Player("Computer");
         Game game = new Game(user, computer);
         
-        int width = this.getWidth();
-        int height = this.getHeight();
-        
         _gameController = new GameController(context, game);
     }
     

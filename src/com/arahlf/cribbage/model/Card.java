@@ -1,7 +1,7 @@
 package com.arahlf.cribbage.model;
 
-import com.arahlf.cribbage.Rank;
-import com.arahlf.cribbage.Suit;
+import com.arahlf.cribbage.model.Rank;
+import com.arahlf.cribbage.model.Suit;
 
 public class Card {
     

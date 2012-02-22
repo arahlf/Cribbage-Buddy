@@ -5,10 +5,10 @@ import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
 import java.util.Arrays;
 import java.util.List;
 
-import com.arahlf.cribbage.Rank;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.model.Rank;
 
 public class Nobs implements HandScoringRule {
     @Override

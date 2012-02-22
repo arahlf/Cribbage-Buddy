@@ -1,7 +1,7 @@
 package com.arahlf.cribbage.rules.hand;
 
-import static com.arahlf.cribbage.Cards.*;
 import static com.arahlf.cribbage.CribbageUtils.getTotalPoints;
+import static com.arahlf.cribbage.model.Cards.*;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;

@@ -3,8 +3,8 @@ package com.arahlf.cribbage.model;
 import java.util.Collections;
 import java.util.Stack;
 
-import com.arahlf.cribbage.Rank;
-import com.arahlf.cribbage.Suit;
+import com.arahlf.cribbage.model.Rank;
+import com.arahlf.cribbage.model.Suit;
 
 public class Deck {
     

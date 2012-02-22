@@ -1,4 +1,4 @@
-package com.arahlf.cribbage;
+package com.arahlf.cribbage.model;
 
 public enum Rank {
     

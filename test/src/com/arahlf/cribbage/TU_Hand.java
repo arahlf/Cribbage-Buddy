@@ -1,6 +1,6 @@
 package com.arahlf.cribbage;
 
-import static com.arahlf.cribbage.Cards.*;
+import static com.arahlf.cribbage.model.Cards.*;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;

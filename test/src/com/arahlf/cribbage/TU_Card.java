@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.arahlf.cribbage.model.Card;
+import com.arahlf.cribbage.model.Rank;
+import com.arahlf.cribbage.model.Suit;
 
 public class TU_Card {
     @Test

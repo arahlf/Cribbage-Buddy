@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.arahlf.cribbage.Score;
-import com.arahlf.cribbage.Suit;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.model.Suit;
 
 public class Flush implements HandScoringRule {
     @Override
