@@ -4,6 +4,7 @@ import static com.arahlf.cribbage.CribbageUtils.getSuitOrder;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.view.View;
 
 import com.arahlf.cribbage.Images;
 import com.arahlf.cribbage.model.Card;
@@ -29,7 +30,7 @@ public class CardView implements Tappable, Renderable {
     }
     
     @Override
-    public void render(Canvas canvas, Paint paint) {
+    public void render(View view, Canvas canvas, Paint paint) {
         int spriteX, spriteY;
         
         if (_faceUp) {

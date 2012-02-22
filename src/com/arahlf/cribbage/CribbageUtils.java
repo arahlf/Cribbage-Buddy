@@ -54,6 +54,8 @@ public class CribbageUtils {
     
     public static final List<Score> EMPTY_SCORE_LIST = Collections.unmodifiableList(new ArrayList<Score>());
     
+    public static final String TAG = "CribbageBuddy";
+    
     private CribbageUtils() {
     }
 }

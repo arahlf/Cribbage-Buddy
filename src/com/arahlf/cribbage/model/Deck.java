@@ -20,7 +20,11 @@ public class Deck {
         Collections.shuffle(_cards);
     }
     
-    public Card deal() {
+    public Card cutCard(int index) {
+        return _cards.remove(index);
+    }
+    
+    public Card dealCard() {
         return _cards.pop();
     }
     
@@ -30,6 +34,10 @@ public class Deck {
     
     public int getRemainingCardCount() {
         return _cards.size();
+    }
+    
+    public int indexOfCard(Card card) {
+        return _cards.indexOf(card);
     }
     
     private final Stack<Card> _cards = new Stack<Card>();

@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.view.View;
 
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
@@ -29,9 +30,9 @@ public class HandView implements CardTapListener, Renderable {
     }
     
     @Override
-    public void render(Canvas canvas, Paint paint) {
+    public void render(View view, Canvas canvas, Paint paint) {
         for (CardView cardView : _cardViews) {
-            cardView.render(canvas, paint);
+            cardView.render(view, canvas, paint);
         }
     }
     

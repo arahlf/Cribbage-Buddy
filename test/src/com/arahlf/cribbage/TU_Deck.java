@@ -13,13 +13,13 @@ public class TU_Deck {
         
         assertEquals(52, deck.getRemainingCardCount());
         
-        deck.deal();
+        deck.dealCard();
         
         assertEquals(51, deck.getRemainingCardCount());
         
-        deck.deal();
-        deck.deal();
-        deck.deal();
+        deck.dealCard();
+        deck.dealCard();
+        deck.dealCard();
         
         assertEquals(48, deck.getRemainingCardCount());
     }

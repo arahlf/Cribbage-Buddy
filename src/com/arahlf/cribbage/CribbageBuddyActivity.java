@@ -39,11 +39,14 @@ class CribbageView extends View {
     public CribbageView(Context context) {
         super(context);
         
-        Player user = new Player("Player");
+        Player user = new Player("Alan");
         Player computer = new Player("Computer");
         Game game = new Game(user, computer);
         
-        _gameController = new GameController(game);
+        int width = this.getWidth();
+        int height = this.getHeight();
+        
+        _gameController = new GameController(context, game);
     }
     
     @Override
@@ -59,7 +62,7 @@ class CribbageView extends View {
         paint.setTypeface(Typeface.SANS_SERIF);
         paint.setColor(Color.WHITE);
         
-        _gameController.renderViews(canvas, paint);
+        _gameController.render(this, canvas, paint);
     }
     
     @Override

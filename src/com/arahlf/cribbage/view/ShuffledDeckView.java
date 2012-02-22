@@ -5,22 +5,23 @@ import java.util.List;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.view.View;
 
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Deck;
+import com.arahlf.cribbage.model.Point;
 
 public class ShuffledDeckView implements CardTapListener, Renderable, Tappable {
     
-    public ShuffledDeckView(int x, int y, Deck deck, CardSelectionListener listener) {
-        _x = x;
-        _y = y;
+    public ShuffledDeckView(Point location, Deck deck, CardSelectionListener listener) {
+        _location = location;
         _deck = deck;
         _listener = listener;
         
         deck.shuffle();
         
         for (int i = 0; i < deck.getRemainingCardCount(); i++) {
-            CardView cardView = new CardView(_x + i * 5, _y, deck.getCard(i));
+            CardView cardView = new CardView(_location.getX() + i * CARD_SPACING, _location.getY(), deck.getCard(i));
             cardView.setFaceUp(false);
             cardView.setTapListener(this);
             
@@ -42,16 +43,17 @@ public class ShuffledDeckView implements CardTapListener, Renderable, Tappable {
     }
     
     @Override
-    public void render(Canvas canvas, Paint paint) {
+    public void render(View view, Canvas canvas, Paint paint) {
         for (CardView cardView : _cardViews) {
-            cardView.render(canvas, paint);
+            cardView.render(view, canvas, paint);
         }
     }
     
-    private final int _x;
-    private final int _y;
+    private final Point _location;
     private final Deck _deck;
     private final List<CardView> _cardViews = new ArrayList<CardView>();
     private final ZIndexManager _manager = new ZIndexManager();
     private final CardSelectionListener _listener;
+    
+    private static final int CARD_SPACING = 7;
 }
