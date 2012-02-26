@@ -9,7 +9,6 @@ import android.view.View;
 
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Deck;
-import com.arahlf.cribbage.model.Point;
 
 public class ShuffledDeckView implements CardTapListener, Renderable, Tappable {
     
