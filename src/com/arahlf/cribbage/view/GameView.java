@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.arahlf.cribbage.model.Game;
 import com.arahlf.cribbage.model.GameState;
+import com.arahlf.cribbage.util.Point;
+import com.arahlf.cribbage.util.Rectangle;
 
 public class GameView implements Renderable, Tappable {
     
