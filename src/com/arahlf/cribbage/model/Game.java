@@ -7,9 +7,7 @@ public class Game {
         _player2 = player2;
         
         _deck = new Deck();
-        _deck.shuffle();
-        
-        player2CutCard = _deck.cutCard((int) Math.floor(Math.random() * 52));
+        //_deck.shuffle();
     }
     
     public Player getPlayer1() {
@@ -29,7 +27,7 @@ public class Game {
     }
     
     public void lockCards() {
-        _state = GameState.PLAY;
+        _state = GameState.CHOOSING;
     }
     
     public void setDealer(Player player) {
@@ -40,6 +38,14 @@ public class Game {
         return player.equals(_dealer);
     }
     
+    public int getPlayer1Score() {
+        return _player1Score;
+    }
+    
+    public int getPlayer2Score() {
+        return _player2Score;
+    }
+    
     // public for prototyping purposes until GameStates are separated out
     public Card player1CutCard;
     public  Card player2CutCard;
@@ -47,6 +53,8 @@ public class Game {
     private Deck _deck;
     private GameState _state = GameState.CUTTING;
     private Player _dealer;
+    private int _player1Score;
+    private int _player2Score;
     private final Player _player1;
     private final Player _player2;
 }

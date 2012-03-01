@@ -9,14 +9,17 @@ import android.view.View;
 
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Deck;
+import com.arahlf.cribbage.model.DeckListener;
 import com.arahlf.cribbage.util.Point;
 
-public class ShuffledDeckView implements CardTapListener, Renderable, Tappable {
+public class ShuffledDeckView implements CardTapListener, Renderable, Tappable, DeckListener {
     
     public ShuffledDeckView(Point location, Deck deck, CardSelectionListener listener) {
         _location = location;
         _deck = deck;
         _listener = listener;
+        
+        _deck.addListener(this);
         
         deck.shuffle();
         
@@ -47,6 +50,11 @@ public class ShuffledDeckView implements CardTapListener, Renderable, Tappable {
         for (CardView cardView : _cardViews) {
             cardView.render(view, canvas, paint);
         }
+    }
+    
+    @Override
+    public void onDeckChanged(Deck deck) {
+        
     }
     
     private final Point _location;

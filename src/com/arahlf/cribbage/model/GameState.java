@@ -9,6 +9,7 @@ package com.arahlf.cribbage.model;
  */
 public enum GameState {
     CUTTING,
-    PLAY,
-    SHOW
+    CHOOSING,
+    PLAYING,
+    SHOWING
 }

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.arahlf.cribbage.model.Card;
+import com.arahlf.cribbage.model.Cards;
+import com.arahlf.cribbage.model.Deck;
 import com.arahlf.cribbage.model.Game;
 import com.arahlf.cribbage.view.CardSelectionListener;
 import com.arahlf.cribbage.view.GameView;
@@ -42,25 +44,41 @@ public class GameController implements Renderable, CardSelectionListener {
             toast.show();
         }
         else {
-            _game.player1CutCard = card;
+            Deck deck = _game.getDeck();
             
+            card = Cards.JACK_OF_DIAMONDS;
+            _game.player1CutCard = card;
+            _game.player2CutCard = Cards.JACK_OF_CLUBS;
+            
+            int count = deck.getRemainingCardCount();
+            
+//            _game.player1CutCard = card;
+//            _game.player2CutCard = deck.cutCard((int) Math.floor(Math.random() * deck.getRemainingCardCount()));
+            
+            int card1Value = _game.player1CutCard.getRank().getOrdinal();
+            int card2Value = _game.player2CutCard.getRank().getOrdinal();
             String text;
             
             // TODO handle case when ranks match
-            if (card.getRank().getOrdinal() < _game.player2CutCard.getRank().getOrdinal()) {
+            if (card1Value == card2Value) {
+                text = "Tie... try again.";
+                _game.player1CutCard = null;
+                _game.player2CutCard = null;
+            }
+            else if (card.getRank().getOrdinal() < _game.player2CutCard.getRank().getOrdinal()) {
                 text = "You have won the deal.";
                 _game.setDealer(_game.getPlayer1());
+                _game.lockCards();
             }
             else {
                 text = "You have lost the deal.";
                 _game.setDealer(_game.getPlayer2());
+                _game.lockCards();
             }
             
             Toast toast = Toast.makeText(_context, text, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 110);
             toast.show();
-            
-            _game.lockCards();
         }
     }
     
