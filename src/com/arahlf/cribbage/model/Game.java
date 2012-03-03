@@ -1,13 +1,13 @@
 package com.arahlf.cribbage.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
     
     public Game(Player player1, Player player2) {
         _player1 = player1;
         _player2 = player2;
-        
-        _deck = new Deck();
-        //_deck.shuffle();
     }
     
     public Player getPlayer1() {
@@ -16,18 +16,6 @@ public class Game {
     
     public Player getPlayer2() {
         return _player2;
-    }
-    
-    public Deck getDeck() {
-        return _deck;
-    }
-    
-    public GameState getState() {
-        return _state;
-    }
-    
-    public void lockCards() {
-        _state = GameState.CHOOSING;
     }
     
     public void setDealer(Player player) {
@@ -46,15 +34,34 @@ public class Game {
         return _player2Score;
     }
     
-    // public for prototyping purposes until GameStates are separated out
-    public Card player1CutCard;
-    public  Card player2CutCard;
+    public void addPoints(Player player, int points) {
+        if (player == _player1) {
+            _player1Score += points;
+        }
+        else if (player == _player2) {
+            _player2Score += points;
+        }
+        else {
+            throw new IllegalArgumentException("Unknown player specified.");
+        }
+        
+        for (GameListener listener : _listeners) {
+            listener.onScoreChange();
+        }
+    }
     
-    private Deck _deck;
-    private GameState _state = GameState.CUTTING;
+    public void addListener(GameListener listener) {
+        _listeners.add(listener);
+    }
+    
+    public void removeListener(GameListener listener) {
+        _listeners.remove(listener);
+    }
+    
     private Player _dealer;
     private int _player1Score;
     private int _player2Score;
     private final Player _player1;
     private final Player _player2;
+    private final List<GameListener> _listeners = new ArrayList<GameListener>();
 }
