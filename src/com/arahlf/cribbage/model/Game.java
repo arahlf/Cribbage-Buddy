@@ -3,11 +3,23 @@ package com.arahlf.cribbage.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.arahlf.cribbage.view.CommonAreaView;
+
 public class Game {
     
     public Game(Player player1, Player player2) {
         _player1 = player1;
         _player2 = player2;
+        _playArea1 = new PlayArea(this, _player1);
+        _playArea2 = new PlayArea(this, _player2);
+        
+        Deck deck = new Deck();
+        deck.shuffle();
+        
+        for (int i = 0; i < 6; i++) {
+            _playArea1.dealCard(deck.dealCard());
+            _playArea2.dealCard(deck.dealCard());
+        }
     }
     
     public Player getPlayer1() {
@@ -18,31 +30,24 @@ public class Game {
         return _player2;
     }
     
-    public void setDealer(Player player) {
-        _dealer = player;
+    public PlayArea getPlayArea1() {
+        return _playArea1;
     }
     
-    public boolean isDealer(Player player) {
-        return player.equals(_dealer);
+    public PlayArea getPlayArea2() {
+        return _playArea2;
     }
     
-    public int getPlayer1Score() {
-        return _player1Score;
-    }
-    
-    public int getPlayer2Score() {
-        return _player2Score;
+    public int getPlayerScore(Player player) {
+        return player == _player1 ? _player1Score : _player2Score;
     }
     
     public void addPoints(Player player, int points) {
         if (player == _player1) {
             _player1Score += points;
         }
-        else if (player == _player2) {
-            _player2Score += points;
-        }
         else {
-            throw new IllegalArgumentException("Unknown player specified.");
+            _player2Score += points;
         }
         
         for (GameListener listener : _listeners) {
@@ -58,9 +63,10 @@ public class Game {
         _listeners.remove(listener);
     }
     
-    private Player _dealer;
     private int _player1Score;
     private int _player2Score;
+    private PlayArea _playArea1;
+    private PlayArea _playArea2;
     private final Player _player1;
     private final Player _player2;
     private final List<GameListener> _listeners = new ArrayList<GameListener>();

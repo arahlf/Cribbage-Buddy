@@ -19,7 +19,7 @@ public class CribbageBuddyActivity extends Activity {
         
         
         Player player1 = new Player("Alan");
-        Player player2 = new Player("Tracy");
+        Player player2 = new Player("Tracy (Computer)");
         Game game = new Game(player1, player2);
         
         GameController controller = new GameController(this, game);

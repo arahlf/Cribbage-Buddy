@@ -1,15 +1,11 @@
 package com.arahlf.cribbage.view;
 
-import static com.arahlf.cribbage.CribbageUtils.TAG;
 import static com.arahlf.cribbage.CribbageUtils.getSuitOrder;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
 
 import com.arahlf.cribbage.Images;
 import com.arahlf.cribbage.model.Card;
@@ -20,6 +16,10 @@ public class CardView extends View {
         super(context);
         
         _card = card;
+    }
+    
+    public Card getCard() {
+        return _card;
     }
     
     @Override
@@ -37,12 +37,6 @@ public class CardView extends View {
             spriteY = 4 * HEIGHT;
         }
         
-        int left = getLeft();
-        int right = getRight();
-        
-        Log.e(TAG, "left: " + left);
-        Log.e(TAG, "right: " + right);
-        
         Rect src = new Rect(spriteX, spriteY, spriteX + WIDTH, spriteY + HEIGHT);
         Rect dst = new Rect(0, 0, WIDTH, HEIGHT);
         
@@ -51,6 +45,7 @@ public class CardView extends View {
     
     public void setFaceUp(boolean faceUp) {
         _faceUp = faceUp;
+        invalidate();
     }
     
     @Override
