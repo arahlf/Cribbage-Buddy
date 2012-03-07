@@ -3,12 +3,11 @@ package com.arahlf.cribbage.view;
 import android.content.Context;
 import android.widget.RelativeLayout;
 
-import com.arahlf.cribbage.model.Card;
-import com.arahlf.cribbage.model.Cards;
+import com.arahlf.cribbage.model.CommonArea;
 
 public class CommonAreaView extends RelativeLayout {
 
-    public CommonAreaView(Context context) {
+    public CommonAreaView(Context context, CommonArea commonArea) {
         super(context);
         
         setPadding(PADDING, PADDING, PADDING, PADDING);
@@ -17,7 +16,7 @@ public class CommonAreaView extends RelativeLayout {
         LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         params.addRule(RelativeLayout.CENTER_VERTICAL);
         
-        _cardView = new CardView(context, Cards.JACK_OF_HEARTS);
+        _cardView = new CardView(context, commonArea.getCutCard());
         _cardView.setLayoutParams(params);
         _cardView.setFaceUp(false);
         
@@ -26,11 +25,6 @@ public class CommonAreaView extends RelativeLayout {
     
     public void showCut() {
         _cardView.setFaceUp(true);
-    }
-    
-    // TODO temporary
-    public Card getCutCard() {
-        return _cardView.getCard();
     }
     
     private final CardView _cardView;

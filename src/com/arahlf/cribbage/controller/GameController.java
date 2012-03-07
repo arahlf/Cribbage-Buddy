@@ -43,11 +43,12 @@ public class GameController implements CardSelectionListener {
                     _game.getPlayArea2().removeSelectedCards();
                     
                     // score ze hands!
+                    Card cut = _game.getCommonArea().getCutCard();
                     List<Card> cards1 = _game.getPlayArea1().getCards();
                     List<Card> cards2 = _game.getPlayArea2().getCards();
                     
-                    Hand hand1 = new Hand(_gameView.getCommonAreaView().getCutCard(), cards1.get(0), cards1.get(1), cards1.get(2), cards1.get(3));
-                    Hand hand2 = new Hand(_gameView.getCommonAreaView().getCutCard(), cards2.get(0), cards2.get(1), cards2.get(2), cards2.get(3));
+                    Hand hand1 = new Hand(cut, cards1.get(0), cards1.get(1), cards1.get(2), cards1.get(3));
+                    Hand hand2 = new Hand(cut, cards2.get(0), cards2.get(1), cards2.get(2), cards2.get(3));
                     
                     CribbagHandScoringRules rules = new CribbagHandScoringRules();
                     

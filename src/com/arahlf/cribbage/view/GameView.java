@@ -15,7 +15,7 @@ public class GameView extends LinearLayout {
         
         _game = game;
         _button = new CribbageButton(context);
-        _commonArea = new CommonAreaView(context);
+        _commonArea = new CommonAreaView(context, _game.getCommonArea());
         _player1Area = new PlayAreaView(context, _game.getPlayArea1(), listener);
         _player2Area = new PlayAreaView(context, _game.getPlayArea2(), listener);
         
