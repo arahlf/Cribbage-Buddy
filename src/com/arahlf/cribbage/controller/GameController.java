@@ -9,6 +9,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.arahlf.cribbage.ai.Difficulty;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Game;
 import com.arahlf.cribbage.model.Hand;
@@ -19,8 +20,9 @@ import com.arahlf.cribbage.view.GameView;
 
 public class GameController implements CardSelectionListener {
     
-    public GameController(Context context, Game game) {
+    public GameController(Context context, Game game, Difficulty difficulty) {
         _game = game;
+        _difficulty = difficulty;
         _gameView = new GameView(context, _game, this);
         
         ((Activity) context).setContentView(_gameView);
@@ -73,6 +75,7 @@ public class GameController implements CardSelectionListener {
         }
     }
     
+    private final Difficulty _difficulty;
     private final Game _game;
     private final GameView _gameView;
 }

@@ -58,6 +58,19 @@ public class TU_Flush {
         
         assertEquals(1, scores.size());
         assertScore(scores.get(0), 5, "Flush (5 card) for 5", 5);
+        
+        int size = 7;
+        int card1 = (int) Math.floor(Math.random() * size);
+        int card2 = card1;
+        
+        while (card1 == card2) {
+            card2 = (int) Math.floor(Math.random() * size);
+            System.out.println("rawr");
+        }
+        
+        System.out.println("card1: " + card1);
+        System.out.println("card2: " + card2);
+        
     }
     
     private HandScoringRule _rule = new Flush();

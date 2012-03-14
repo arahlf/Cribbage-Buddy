@@ -16,6 +16,9 @@ public class PlayStack {
         return true;
     }
     
+    public int getPipCount() {
+        return _getTotalPips();
+    }
     
     private int _getTotalPips() {
         int total = 0;
