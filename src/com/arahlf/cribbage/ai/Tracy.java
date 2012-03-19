@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.PlayArea;
+import com.arahlf.cribbage.model.PlayStack;
 
 public class Tracy implements Difficulty {
     @Override
@@ -22,5 +23,11 @@ public class Tracy implements Difficulty {
         playArea.selectCard(cards.get(card2));
         
         playArea.removeSelectedCards();
+    }
+
+    @Override
+    public void playCard(PlayArea playArea, PlayStack playStack) {
+        playArea.selectCard(playArea.getCards().get(0));
+        playStack.playCard(playArea.removeSelectedCards().get(0));
     }
 }

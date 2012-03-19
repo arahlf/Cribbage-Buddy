@@ -10,5 +10,10 @@ public class CommonArea {
         return _cut;
     }
     
-    private Card _cut;
+    public PlayStack getPlayStack() {
+        return _playStack;
+    }
+    
+    private final Card _cut;
+    private final PlayStack _playStack = new PlayStack();
 }

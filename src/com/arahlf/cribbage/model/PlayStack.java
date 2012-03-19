@@ -1,13 +1,14 @@
 package com.arahlf.cribbage.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PlayStack {
     
     public boolean playCard(Card card) {
         
-        if (_cards.contains(card) && _getTotalPips() + card.getRank().getPipValue() > 31) {
+        if (_getTotalPips() + card.getRank().getPipValue() > 31) {
             return false;
         }
         
@@ -18,6 +19,10 @@ public class PlayStack {
     
     public int getPipCount() {
         return _getTotalPips();
+    }
+    
+    public List<Card> getCards() {
+        return Collections.unmodifiableList(_cards);
     }
     
     private int _getTotalPips() {

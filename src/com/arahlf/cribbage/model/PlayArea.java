@@ -56,10 +56,15 @@ public class PlayArea {
         _listeners.remove(listener);
     }
     
-    public void removeSelectedCards() {
+    public List<Card> removeSelectedCards() {
+        List<Card> removedCards = new ArrayList<Card>(_selectedCards);
+        
         _cards.removeAll(_selectedCards);
+        _selectedCards.clear();
         
         _notifyListeners();
+        
+        return removedCards;
     }
     
     private void _notifyListeners() {
