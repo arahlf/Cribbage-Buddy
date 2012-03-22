@@ -1,7 +1,6 @@
 package com.arahlf.cribbage.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class PlayStack {
@@ -30,7 +29,7 @@ public class PlayStack {
     }
     
     public List<Card> getCards() {
-        return Collections.unmodifiableList(_cards);
+        return new ArrayList<Card>(_cards);
     }
     
     public void clear() {

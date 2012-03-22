@@ -4,6 +4,7 @@ import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
 import static com.arahlf.cribbage.CribbageUtils.addCards;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.arahlf.cribbage.Score;
@@ -45,6 +46,15 @@ public class Count implements ScoringRule {
 
     @Override
     public List<Score> scorePeg(PlayStack playStack) {
-        return EMPTY_SCORE_LIST;
+        List<Card> cards = playStack.getCards();
+        
+        switch (playStack.getPipCount()) {
+            case 15:
+                return Arrays.asList(new Score(2, "Fifteen", cards));
+            case 31:
+                return Arrays.asList(new Score(2, "Thirty one", cards));
+            default:
+                return EMPTY_SCORE_LIST;
+        }
     }
 }
