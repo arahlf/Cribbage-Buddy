@@ -14,7 +14,7 @@ public class CribbagHandScoringRules implements ScoringRule {
         _rules.add(new Multiple());
         _rules.add(new Nobs());
         _rules.add(new Run());
-        _rules.add(new FifteenCount());
+        _rules.add(new Count());
     }
     
     @Override

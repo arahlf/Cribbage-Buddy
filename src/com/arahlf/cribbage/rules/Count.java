@@ -11,7 +11,7 @@ import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
 import com.arahlf.cribbage.model.PlayStack;
 
-public class FifteenCount implements ScoringRule {
+public class Count implements ScoringRule {
     @Override
     public List<Score> scoreHand(Hand hand) {
         List<Score> scores = new ArrayList<Score>();
