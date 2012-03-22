@@ -1,4 +1,4 @@
-package com.arahlf.cribbage.rules.hand;
+package com.arahlf.cribbage.rules;
 
 import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
 
