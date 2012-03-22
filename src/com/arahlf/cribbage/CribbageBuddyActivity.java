@@ -23,11 +23,6 @@ public class CribbageBuddyActivity extends Activity {
         Player player2 = new Player("Tracy (Computer)");
         Game game = new Game(player1, player2);
         
-        GameController controller = new GameController(this, game, new Tracy());
-        
-//        Game game = new Game();
-//        game.changeState(new MenuState(this));
-//        
-//        setContentView(game.getGameState().getView());
+        new GameController(this, game, new Tracy());
     }
 }
