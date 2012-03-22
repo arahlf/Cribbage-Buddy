@@ -69,5 +69,5 @@ public class TU_FifteenCount {
         assertEquals(8, scores.size());
     }
     
-    private HandScoringRule _rule = new FifteenCount();
+    private ScoringRule _rule = new FifteenCount();
 }

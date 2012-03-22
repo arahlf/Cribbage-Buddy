@@ -1,5 +1,6 @@
 package com.arahlf.cribbage.rules.hand;
 
+import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
 import static com.arahlf.cribbage.CribbageUtils.addCards;
 
 import java.util.ArrayList;
@@ -8,8 +9,9 @@ import java.util.List;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.model.PlayStack;
 
-public class FifteenCount implements HandScoringRule {
+public class FifteenCount implements ScoringRule {
     @Override
     public List<Score> scoreHand(Hand hand) {
         List<Score> scores = new ArrayList<Score>();
@@ -39,5 +41,10 @@ public class FifteenCount implements HandScoringRule {
             
             _search(newCurrent, newRemaining, scores);
         }
+    }
+
+    @Override
+    public List<Score> scorePeg(PlayStack playStack) {
+        return EMPTY_SCORE_LIST;
     }
 }

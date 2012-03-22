@@ -10,7 +10,7 @@ public class CribbageTextView extends TextView {
         super(context);
         
         setTextColor(Color.WHITE);
-        setTextSize(18);
+        setTextSize(16);
     }
 
 }

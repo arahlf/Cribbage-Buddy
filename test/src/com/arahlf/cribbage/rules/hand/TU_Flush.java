@@ -60,5 +60,5 @@ public class TU_Flush {
         assertScore(scores.get(0), 5, "Flush (5 card) for 5", 5);
     }
     
-    private HandScoringRule _rule = new Flush();
+    private ScoringRule _rule = new Flush();
 }

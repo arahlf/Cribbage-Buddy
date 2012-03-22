@@ -33,7 +33,7 @@ public class PlayAreaView extends RelativeLayout implements GameListener, PlayAr
         _scoreTextView.setLayoutParams(params);
         
         setPadding(PADDING, PADDING, PADDING, PADDING);
-        setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 250));
+        setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 215));
         
         addView(_playerTextView);
         addView(_scoreTextView);
@@ -56,9 +56,11 @@ public class PlayAreaView extends RelativeLayout implements GameListener, PlayAr
     
     @Override
     public void onClick(View v) {
-        CardView cardView = (CardView) v;
-        
-        _listener.onCardSelected(cardView.getCard());
+        if (_listener != null) {
+            CardView cardView = (CardView) v;
+            
+            _listener.onCardSelected(cardView.getCard());
+        }
     }
     
     public void showCards() {

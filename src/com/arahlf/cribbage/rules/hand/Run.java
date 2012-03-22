@@ -10,8 +10,9 @@ import java.util.TreeMap;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.model.PlayStack;
 
-public class Run implements HandScoringRule {
+public class Run implements ScoringRule {
     @Override
     public List<Score> scoreHand(Hand hand) {
         List<Card> cards = hand.getCards();
@@ -109,6 +110,11 @@ public class Run implements HandScoringRule {
             return Arrays.asList(new Score(5, "Run of five", cards));
         }
         
+        return EMPTY_SCORE_LIST;
+    }
+
+    @Override
+    public List<Score> scorePeg(PlayStack playStack) {
         return EMPTY_SCORE_LIST;
     }
 }

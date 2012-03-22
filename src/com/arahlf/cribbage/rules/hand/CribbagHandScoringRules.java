@@ -5,8 +5,9 @@ import java.util.List;
 
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.model.PlayStack;
 
-public class CribbagHandScoringRules implements HandScoringRule {
+public class CribbagHandScoringRules implements ScoringRule {
     
     public CribbagHandScoringRules() {
         _rules.add(new Flush());
@@ -20,12 +21,23 @@ public class CribbagHandScoringRules implements HandScoringRule {
     public List<Score> scoreHand(Hand hand) {
         List<Score> scores = new ArrayList<Score>();
         
-        for (HandScoringRule rule : _rules) {
+        for (ScoringRule rule : _rules) {
             scores.addAll(rule.scoreHand(hand));
         }
         
         return scores;
     }
     
-    private final List<HandScoringRule> _rules = new ArrayList<HandScoringRule>();
+    @Override
+    public List<Score> scorePeg(PlayStack playStack) {
+        List<Score> scores = new ArrayList<Score>();
+        
+        for (ScoringRule rule : _rules) {
+            scores.addAll(rule.scorePeg(playStack));
+        }
+        
+        return scores;
+    }
+    
+    private final List<ScoringRule> _rules = new ArrayList<ScoringRule>();
 }

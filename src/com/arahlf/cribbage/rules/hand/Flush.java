@@ -8,9 +8,10 @@ import java.util.List;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.model.PlayStack;
 import com.arahlf.cribbage.model.Suit;
 
-public class Flush implements HandScoringRule {
+public class Flush implements ScoringRule {
     @Override
     public List<Score> scoreHand(Hand hand) {
         List<Card> cards = hand.getCardsWithoutCut();
@@ -30,6 +31,11 @@ public class Flush implements HandScoringRule {
             return Arrays.asList(new Score(4, "Flush (4 card)", cards));
         }
         
+        return EMPTY_SCORE_LIST;
+    }
+
+    @Override
+    public List<Score> scorePeg(PlayStack playStack) {
         return EMPTY_SCORE_LIST;
     }
 }

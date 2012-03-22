@@ -53,5 +53,5 @@ public class TU_Multiple {
         assertScore(scores.get(1), 6, "Three of a kind for 6", 3);
     }
     
-    private HandScoringRule _rule = new Multiple();
+    private ScoringRule _rule = new Multiple();
 }

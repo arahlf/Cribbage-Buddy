@@ -22,5 +22,5 @@ public class TU_CribbageHandScoringRules {
         assertEquals(29, getTotalPoints(scores));
     }
     
-    private HandScoringRule _rule = new CribbagHandScoringRules();
+    private ScoringRule _rule = new CribbagHandScoringRules();
 }

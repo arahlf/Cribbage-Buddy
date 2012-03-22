@@ -30,4 +30,9 @@ public class Tracy implements Difficulty {
         playArea.selectCard(playArea.getCards().get(0));
         playStack.playCard(playArea.removeSelectedCards().get(0));
     }
+
+    @Override
+    public Card pegCard(PlayArea playArea, PlayStack playStack) {
+        return playArea.getCards().get(0);
+    }
 }

@@ -100,5 +100,5 @@ public class TU_Run {
         assertScore(scores.get(0), 9, "Triple run of three for 9", 5);
     }
     
-    private HandScoringRule _rule = new Run();
+    private ScoringRule _rule = new Run();
 }

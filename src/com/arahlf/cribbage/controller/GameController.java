@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.arahlf.cribbage.Logger;
 import com.arahlf.cribbage.ai.Difficulty;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Game;
@@ -39,7 +40,6 @@ public class GameController implements CardSelectionListener {
                         playArea.removeSelectedCards();
                         _gameView.getCommonAreaView().showCut();
                         
-                        // remove a few cards from the computer's hand
                         _difficulty.chooseHand(_game.getPlayArea2());
                     }
                 }
@@ -76,6 +76,8 @@ public class GameController implements CardSelectionListener {
     
     @Override
     public void onCardSelected(Card card) {
+        Logger.log("Selected card: " + card);
+        
         PlayArea playArea = _game.getPlayArea1();
         
         List<Card> selectedCards = playArea.getSelectedCards();

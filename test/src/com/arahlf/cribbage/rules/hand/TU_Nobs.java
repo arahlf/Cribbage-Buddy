@@ -31,5 +31,5 @@ public class TU_Nobs {
         assertEquals(0, scores.size());
     }
     
-    private HandScoringRule _rule = new Nobs();
+    private ScoringRule _rule = new Nobs();
 }

@@ -8,24 +8,18 @@ public class PlayStack {
     
     public boolean playCard(Card card) {
         
-        if (_getTotalPips() + card.getRank().getPipValue() > 31) {
+        if (getPipCount() + card.getRank().getPipValue() > 31) {
             return false;
         }
         
         _cards.add(card);
         
+        _notifyListeners();
+        
         return true;
     }
     
     public int getPipCount() {
-        return _getTotalPips();
-    }
-    
-    public List<Card> getCards() {
-        return Collections.unmodifiableList(_cards);
-    }
-    
-    private int _getTotalPips() {
         int total = 0;
         
         for (Card card : _cards) {
@@ -35,5 +29,34 @@ public class PlayStack {
         return total;
     }
     
+    public List<Card> getCards() {
+        return Collections.unmodifiableList(_cards);
+    }
+    
+    public void clear() {
+        _cards.clear();
+    }
+    
+    public void addListener(PlayStackListener listener) {
+        _listeners.add(listener);
+    }
+    
+    private void _notifyListeners() {
+        for (PlayStackListener listener : _listeners) {
+            listener.onPlayStackUpdate(this);
+        }
+    }
+    
     public final List<Card> _cards = new ArrayList<Card>();
+    public final List<PlayStackListener> _listeners = new ArrayList<PlayStackListener>();
+    
+    
+    public static interface PlayStackListener {
+        /**
+         * Fired when the PlayStack is updated.
+         * @param playStack
+         */
+        void onPlayStackUpdate(PlayStack playStack);
+    }
 }
+

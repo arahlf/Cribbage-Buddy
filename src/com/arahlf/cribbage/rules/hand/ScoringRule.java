@@ -4,13 +4,14 @@ import java.util.List;
 
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.model.PlayStack;
 
 /**
  * An interface for rules used to score hands.
  * 
  * @author arahlf
  */
-public interface HandScoringRule {
+public interface ScoringRule {
     /**
      * Scores a hand.
      * 
@@ -19,4 +20,12 @@ public interface HandScoringRule {
      * @return A list of Scores, never null.
      */
     public List<Score> scoreHand(Hand hand);
+    
+    /**
+     * Scores a peg.
+     * 
+     * @param playStack
+     * @return A list of Scores, never null.
+     */
+    public List<Score> scorePeg(PlayStack playStack);
 }

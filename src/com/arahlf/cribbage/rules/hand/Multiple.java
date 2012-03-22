@@ -1,5 +1,7 @@
 package com.arahlf.cribbage.rules.hand;
 
+import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,9 +12,10 @@ import java.util.Map.Entry;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.model.PlayStack;
 import com.arahlf.cribbage.model.Rank;
 
-public class Multiple implements HandScoringRule {
+public class Multiple implements ScoringRule {
     @Override
     public List<Score> scoreHand(Hand hand) {
         List<Card> cards = hand.getCards();
@@ -51,5 +54,10 @@ public class Multiple implements HandScoringRule {
         
         Collections.sort(scores);
         return scores;
+    }
+
+    @Override
+    public List<Score> scorePeg(PlayStack playStack) {
+        return EMPTY_SCORE_LIST;
     }
 }
