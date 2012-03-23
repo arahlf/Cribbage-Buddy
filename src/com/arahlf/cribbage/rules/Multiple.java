@@ -1,7 +1,5 @@
 package com.arahlf.cribbage.rules;
 
-import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -35,21 +33,7 @@ public class Multiple implements ScoringRule {
         for (Entry<Rank, List<Card>> entry : groups.entrySet()) {
             List<Card> group = entry.getValue();
             
-            switch (group.size()) {
-                case 1:
-                    continue;
-                case 2:
-                    scores.add(new Score(2, "Two of a kind", group));
-                    break;
-                case 3:
-                    scores.add(new Score(6, "Three of a kind", group));
-                    break;
-                case 4:
-                    scores.add(new Score(12, "Four of a kind", group));
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid Rank group count: " + group.size());
-            }
+            _addScore(group, scores);
         }
         
         Collections.sort(scores);
@@ -58,6 +42,48 @@ public class Multiple implements ScoringRule {
 
     @Override
     public List<Score> scorePeg(PlayStack playStack) {
-        return EMPTY_SCORE_LIST;
+        List<Card> cards = playStack.getCards();
+        
+        int size = cards.size();
+        List<Card> multiples = new ArrayList<Card>();
+        
+        if (size > 1) {
+            Card lastCard = cards.get(size - 1);
+            
+            multiples.add(lastCard);
+            
+            for (int i = size - 2; i >= 0; i--) {
+                Card card = cards.get(i);
+                
+                if (!card.getRank().equals(lastCard.getRank())) {
+                    break;
+                }
+                
+                multiples.add(card);
+                continue;
+            }
+        }
+        
+        return _addScore(multiples, new ArrayList<Score>());
+    }
+    
+    private List<Score> _addScore(List<Card> multiples, List<Score> scores) {
+        switch (multiples.size()) {
+            case 1:
+                break;
+            case 2:
+                scores.add(new Score(2, "Pair", multiples));
+                break;
+            case 3:
+                scores.add(new Score(6, "Three of a kind", multiples));
+                break;
+            case 4:
+                scores.add(new Score(12, "Four of a kind", multiples));
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid multiple count: " + multiples.size());
+        }
+        
+        return scores;
     }
 }
