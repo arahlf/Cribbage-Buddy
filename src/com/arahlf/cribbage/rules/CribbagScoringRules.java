@@ -7,9 +7,9 @@ import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Hand;
 import com.arahlf.cribbage.model.PlayStack;
 
-public class CribbagHandScoringRules implements ScoringRule {
+public class CribbagScoringRules implements ScoringRule {
     
-    public CribbagHandScoringRules() {
+    public CribbagScoringRules() {
         _rules.add(new Flush());
         _rules.add(new Multiple());
         _rules.add(new Nobs());

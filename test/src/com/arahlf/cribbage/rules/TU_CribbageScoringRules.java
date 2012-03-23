@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.arahlf.cribbage.Score;
 import com.arahlf.cribbage.model.Hand;
 
-public class TU_CribbageHandScoringRules {
+public class TU_CribbageScoringRules {
     @Test
     public void testPerfectHand() {
         Hand hand = new Hand(FIVE_OF_CLUBS, JACK_OF_CLUBS, FIVE_OF_DIAMONDS, FIVE_OF_SPADES, FIVE_OF_HEARTS);
@@ -22,5 +22,5 @@ public class TU_CribbageHandScoringRules {
         assertEquals(29, getTotalPoints(scores));
     }
     
-    private ScoringRule _rule = new CribbagHandScoringRules();
+    private ScoringRule _rule = new CribbagScoringRules();
 }
