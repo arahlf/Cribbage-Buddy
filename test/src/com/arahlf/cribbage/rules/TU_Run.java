@@ -9,7 +9,9 @@ import java.util.List;
 import org.junit.Test;
 
 import com.arahlf.cribbage.Score;
+import com.arahlf.cribbage.model.Card;
 import com.arahlf.cribbage.model.Hand;
+import com.arahlf.cribbage.model.PlayStack;
 
 public class TU_Run {
     @Test
@@ -98,6 +100,46 @@ public class TU_Run {
         
         assertEquals(1, scores.size());
         assertScore(scores.get(0), 9, "Triple run of three for 9", 5);
+    }
+    
+    @Test
+    public void testThreeCardRunWhilePegging() {
+        PlayStack playStack = _createPlayStack(EIGHT_OF_DIAMONDS, TWO_OF_CLUBS, THREE_OF_HEARTS, FOUR_OF_DIAMONDS);
+        
+        List<Score> scores = _rule.scorePeg(playStack);
+        
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 3, "Run of 3 for 3", 3);
+    }
+    
+    @Test
+    public void testFourCardRunWhilePegging() {
+        PlayStack playStack = _createPlayStack(SIX_OF_CLUBS, EIGHT_OF_DIAMONDS, FIVE_OF_SPADES, SEVEN_OF_HEARTS);
+        
+        List<Score> scores = _rule.scorePeg(playStack);
+        
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 4, "Run of 4 for 4", 4);
+    }
+    
+    @Test
+    public void testSevenCardRunWhilePegging() {
+        PlayStack playStack = _createPlayStack(THREE_OF_CLUBS, TWO_OF_DIAMONDS, FIVE_OF_HEARTS, ACE_OF_SPADES, FOUR_OF_SPADES, SIX_OF_DIAMONDS, SEVEN_OF_HEARTS);
+        
+        List<Score> scores = _rule.scorePeg(playStack);
+        
+        assertEquals(1, scores.size());
+        assertScore(scores.get(0), 7, "Run of 7 for 7", 7);
+    }
+    
+    private PlayStack _createPlayStack(Card... cards) {
+        PlayStack playStack = new PlayStack();
+        
+        for (Card card : cards) {
+            playStack.playCard(card);
+        }
+        
+        return playStack;
     }
     
     private ScoringRule _rule = new Run();

@@ -4,6 +4,8 @@ import static com.arahlf.cribbage.CribbageUtils.EMPTY_SCORE_LIST;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -115,6 +117,58 @@ public class Run implements ScoringRule {
 
     @Override
     public List<Score> scorePeg(PlayStack playStack) {
+        List<Card> cards = playStack.getCards();
+        int size = cards.size();
+        
+        if (size < 3) {
+            return EMPTY_SCORE_LIST;
+        }
+        
+        List<Card> longestRun = null;
+        
+        for (int i = size - 3; i >= 0; i--) {
+            List<Card> subList = cards.subList(i, size);
+            
+            if (_isRun(subList)) {
+                longestRun = subList;
+            }
+        }
+        
+        if (longestRun != null) {
+            List<Score> scores = new ArrayList<Score>();
+            scores.add(new Score(longestRun.size(), "Run of " + longestRun.size(), longestRun));
+            
+            return scores;
+        }
+        
         return EMPTY_SCORE_LIST;
+    }
+    
+    public boolean _isRun(List<Card> cards) {
+        if (cards.size() < 3) {
+            return false;
+        }
+        
+        Collections.sort(cards, new Comparator<Card>() {
+            @Override
+            public int compare(Card lhs, Card rhs) {
+                return lhs.getRank().getOrdinal() - rhs.getRank().getOrdinal();
+            }
+        });
+        
+        int lastOrdinal = cards.get(0).getRank().getOrdinal();
+        
+        for (int i = 1; i < cards.size(); i++) {
+            int currentOrdinal = cards.get(i).getRank().getOrdinal();
+            
+            if (currentOrdinal == lastOrdinal + 1) {
+                lastOrdinal = currentOrdinal;
+            }
+            else {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }
